@@ -599,13 +599,14 @@ def check_monthly_references(
             continue
         r_min = float(ref_min_val.iloc[0])
         r_max = float(ref_max_val.iloc[0])
+        rounded_val = round(float(nandrad_val), 2)
         results.append({
             "metric": f"{metric_label} {month_labels[i]} [kWh]",
             "case": case,
-            "nandrad_value": round(float(nandrad_val), 2),
+            "nandrad_value": rounded_val,
             "ref_min": r_min,
             "ref_max": r_max,
-            "status": _check_range(float(nandrad_val), r_min, r_max),
+            "status": _check_range(rounded_val, r_min, r_max),
         })
     return results
 
