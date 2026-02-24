@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>BESTEST Validation Overview (v1)</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 24px; color: #333; }
+h1 { margin-bottom: 4px; }
+.subtitle { color: #666; margin-bottom: 20px; }
+.stats { font-size: 1.1em; margin: 12px 0 20px; }
+.stats span { font-weight: bold; }
+.pass { color: #155724; }
+.fail { color: #721c24; }
+.error { color: #856404; }
+table { border-collapse: collapse; width: 100%; margin-bottom: 8px; }
+th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; }
+th { background: #f0f0f0; }
+tr:hover { background: #f9f9f9; }
+a { color: #0056b3; text-decoration: none; }
+a:hover { text-decoration: underline; }
+details { margin-bottom: 4px; }
+details > table { margin-top: 4px; }
+</style>
+</head>
+<body>
+<h1>BESTEST Validation Overview</h1>
+<p class="subtitle">Variante: v1 &mdash; 27 Testfälle</p>
+<p class="stats">
+  <span class="pass">14 PASS</span> &nbsp;|&nbsp;
+  <span class="fail">13 FAIL</span> &nbsp;|&nbsp;
+  <span class="error">0 ERROR</span>
+</p>
+
+<h2>Zusammenfassung</h2>
+<table>
+<thead><tr><th>Case</th><th>Beschreibung</th><th>Metriken</th><th>PASS</th><th>FAIL</th><th>SKIP/N/A</th><th>Ergebnis</th></tr></thead>
+<tbody>
+<tr><td><a href="#case-600">600</a></td><td>Leichtbau Basisfall</td><td>28</td><td>25</td><td>3</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-600FF">600FF</a></td><td>Free-Float Leichtbau</td><td>3</td><td>3</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-610">610</a></td><td>Süd-Verschattung</td><td>4</td><td>3</td><td>1</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-620">620</a></td><td>Ost-/West-Fenster</td><td>4</td><td>3</td><td>1</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-630">630</a></td><td>Ost-/West-Verschattung</td><td>4</td><td>2</td><td>2</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-640">640</a></td><td>Nachtabsenkung</td><td>4</td><td>4</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-650">650</a></td><td>Nachtlüftung</td><td>4</td><td>4</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-650FF">650FF</a></td><td>Free-Float Nachtlüftung</td><td>3</td><td>2</td><td>1</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-660">660</a></td><td>Low-E Verglasung</td><td>4</td><td>2</td><td>2</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-670">670</a></td><td>Einscheibenverglasung</td><td>4</td><td>0</td><td>4</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-680">680</a></td><td>Erhöhte Dämmung</td><td>4</td><td>4</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-680FF">680FF</a></td><td>Free-Float erhöhte Dämmung</td><td>3</td><td>3</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-685">685</a></td><td>Thermostat 20/20</td><td>4</td><td>3</td><td>1</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-695">695</a></td><td>Erhöhte Dämmung + 20/20</td><td>4</td><td>4</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-900">900</a></td><td>Schwerbau Basisfall</td><td>28</td><td>23</td><td>5</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-900FF">900FF</a></td><td>Free-Float Schwerbau</td><td>3</td><td>3</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-910">910</a></td><td>Schwerbau + Süd-Verschattung</td><td>4</td><td>4</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-920">920</a></td><td>Schwerbau + Ost-/West-Fenster</td><td>4</td><td>4</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-930">930</a></td><td>Schwerbau + Ost-/West-Verschattung</td><td>4</td><td>3</td><td>1</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-940">940</a></td><td>Schwerbau + Nachtabsenkung</td><td>4</td><td>3</td><td>1</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-950">950</a></td><td>Schwerbau + Nachtlüftung</td><td>4</td><td>4</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-950FF">950FF</a></td><td>Free-Float Schwerbau + Nachtlüftung</td><td>3</td><td>2</td><td>1</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-960">960</a></td><td>Wintergarten (Sunspace)</td><td>4</td><td>1</td><td>3</td><td>0</td><td style="background:#f8d7da;color:#721c24;font-weight:bold;">FAIL</td></tr><tr><td><a href="#case-980">980</a></td><td>Schwerbau + erhöhte Dämmung</td><td>4</td><td>4</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-980FF">980FF</a></td><td>Free-Float Schwerbau + Dämmung</td><td>3</td><td>3</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-985">985</a></td><td>Schwerbau + 20/20</td><td>4</td><td>4</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr><tr><td><a href="#case-995">995</a></td><td>Schwerbau + Dämmung + 20/20</td><td>4</td><td>4</td><td>0</td><td>0</td><td style="background:#d4edda;color:#155724;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+
+<h2>Details</h2>
+
+<details id="case-600">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 600 &mdash; Leichtbau Basisfall
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Leichtbau, Südfenster 12 m², Thermostat 20/27 °C, 0.5 ach, 200 W int. Lasten</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Heizenergie Jan [kWh]</td><td>670.57</td><td>655.6</td><td>734.9</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Feb [kWh]</td><td>650.51</td><td>626.3</td><td>702.1</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Mar [kWh]</td><td>454.68</td><td>433.5</td><td>495.0</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Apr [kWh]</td><td>494.86</td><td>448.0</td><td>517.3</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie May [kWh]</td><td>130.47</td><td>112.8</td><td>150.7</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Jun [kWh]</td><td>7.45</td><td>2.7</td><td>16.0</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Jul [kWh]</td><td>9.09</td><td>4.8</td><td>16.7</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Aug [kWh]</td><td>5.0</td><td>1.4</td><td>9.8</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Sep [kWh]</td><td>69.02</td><td>51.8</td><td>89.1</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Oct [kWh]</td><td>334.26</td><td>317.0</td><td>370.1</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Nov [kWh]</td><td>594.13</td><td>575.6</td><td>647.9</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Dec [kWh]</td><td>688.17</td><td>682.0</td><td>763.5</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Jan [kWh]</td><td>531.51</td><td>417.9</td><td>580.9</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Feb [kWh]</td><td>398.07</td><td>315.4</td><td>450.4</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Mar [kWh]</td><td>492.44</td><td>410.7</td><td>594.4</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Apr [kWh]</td><td>238.74</td><td>218.7</td><td>343.7</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie May [kWh]</td><td>309.91</td><td>321.2</td><td>461.1</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Kühlenergie Jun [kWh]</td><td>498.93</td><td>497.4</td><td>636.0</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Jul [kWh]</td><td>488.99</td><td>505.9</td><td>635.0</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Kühlenergie Aug [kWh]</td><td>617.31</td><td>606.5</td><td>739.8</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Sep [kWh]</td><td>718.43</td><td>672.1</td><td>796.7</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Oct [kWh]</td><td>676.87</td><td>611.1</td><td>729.5</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Nov [kWh]</td><td>454.2</td><td>377.1</td><td>480.9</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Dec [kWh]</td><td>494.84</td><td>386.2</td><td>527.7</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Heizenergie [MWh]</td><td>4.1082</td><td>3.992755</td><td>4.50355</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>5.9203</td><td>5.432</td><td>6.976214</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>2.9236</td><td>3.020233</td><td>3.358893</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenkühllast [kW]</td><td>6.0939</td><td>5.422</td><td>6.8352</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-600FF">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 600FF &mdash; Free-Float Leichtbau
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 600, keine Heizung/Kühlung — freie Temperaturentwicklung</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Max. Lufttemperatur [°C]</td><td>64.87</td><td>62.369162</td><td>68.36078</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Min. Lufttemperatur [°C]</td><td>-11.4</td><td>-13.844209</td><td>-9.9</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Mittl. Lufttemperatur [°C]</td><td>25.72</td><td>24.2578</td><td>26.658725</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-610">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 610 &mdash; Süd-Verschattung
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 600 + horizontaler Überhang 1.0 m, 0.5 m über Fensteroberkante</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>4.232</td><td>4.066423</td><td>4.59206</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>4.2021</td><td>4.1168</td><td>4.854538</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>2.9231</td><td>3.020759</td><td>3.359502</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenkühllast [kW]</td><td>5.7493</td><td>5.331</td><td>6.4896</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-620">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 620 &mdash; Ost-/West-Fenster
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 600, aber 6 m² Ost + 6 m² West statt 12 m² Süd</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>4.2945</td><td>4.093598</td><td>4.71898</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>4.1311</td><td>3.84065</td><td>4.817314</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>2.9253</td><td>3.03786</td><td>3.384592</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenkühllast [kW]</td><td>4.4419</td><td>3.955</td><td>4.9008</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-630">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 630 &mdash; Ost-/West-Verschattung
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 620 + Überhang und vertikale Lamellen an Ost-/West-Fenstern</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>4.5861</td><td>4.355946</td><td>5.13858</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>3.1418</td><td>2.57287</td><td>3.074</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenheizlast [kW]</td><td>2.9254</td><td>3.039372</td><td>3.387554</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenkühllast [kW]</td><td>3.901</td><td>3.526</td><td>4.212174</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-640">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 640 &mdash; Nachtabsenkung
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 600 + Heizung Nachtabsenkung auf 10 °C (23:00–07:00)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>2.5171</td><td>2.403242</td><td>2.682</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>5.6654</td><td>5.237</td><td>5.8926</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>4.059</td><td>4.038541</td><td>4.658</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>6.0071</td><td>5.365</td><td>6.428988</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-650">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 650 &mdash; Nachtlüftung
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 600, keine Heizung, mechanische Lüftung 1700 m³/h (18:00–07:00)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>0.0</td><td>0.0</td><td>0.0</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>4.5689</td><td>4.186</td><td>5.545075</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>0.0</td><td>0.0</td><td>0.0</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>5.6811</td><td>5.045</td><td>6.5712</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-650FF">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 650FF &mdash; Free-Float Nachtlüftung
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 650 (Nachtlüftung) ohne HVAC, freie Temperaturen</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Max. Lufttemperatur [°C]</td><td>62.64</td><td>61.133168</td><td>66.84649</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Min. Lufttemperatur [°C]</td><td>-15.28</td><td>-17.76156</td><td>-15.81</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Mittl. Lufttemperatur [°C]</td><td>18.38</td><td>17.6</td><td>19.798065</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-660">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 660 &mdash; Low-E Verglasung
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 600, Low-E Argon-Verglasung statt Zweischeiben-Klarverglasung</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>3.3661</td><td>3.574</td><td>3.91681</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>3.3453</td><td>2.96625</td><td>3.641256</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>2.4023</td><td>2.62</td><td>2.955183</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenkühllast [kW]</td><td>3.6229</td><td>3.343</td><td>3.933001</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-670">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 670 &mdash; Einscheibenverglasung
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 600, Einscheiben-Klarverglasung statt Zweischeiben</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>3.9421</td><td>5.300178</td><td>7.109126</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>8.1689</td><td>5.954</td><td>6.622703</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenheizlast [kW]</td><td>2.9306</td><td>3.655419</td><td>4.488</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenkühllast [kW]</td><td>7.5746</td><td>5.839</td><td>6.925312</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-680">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 680 &mdash; Erhöhte Dämmung
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 600, Wand 0.250 m und Dach 0.400 m Dämmung (statt 0.066/0.112 m)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>1.9876</td><td>1.732</td><td>2.28626</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>6.5568</td><td>5.932</td><td>7.652995</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>1.9128</td><td>1.777641</td><td>2.126</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>6.4858</td><td>5.761</td><td>7.2912</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-680FF">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 680FF &mdash; Free-Float erhöhte Dämmung
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 680 (erhöhte Dämmung) ohne HVAC, freie Temperaturen</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Max. Lufttemperatur [°C]</td><td>73.69</td><td>69.774156</td><td>81.48</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Min. Lufttemperatur [°C]</td><td>-6.17</td><td>-8.073551</td><td>-5.7</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Mittl. Lufttemperatur [°C]</td><td>32.86</td><td>30.1869</td><td>36.364849</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-685">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 685 &mdash; Thermostat 20/20
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 600, Thermostat 20/20 °C (kein Totband)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>4.73</td><td>4.532</td><td>5.059291</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>8.9891</td><td>8.238</td><td>9.919776</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>2.9234</td><td>3.031857</td><td>3.374427</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenkühllast [kW]</td><td>6.8004</td><td>6.071</td><td>7.4592</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-695">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 695 &mdash; Erhöhte Dämmung + 20/20
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Kombination aus Case 680 (Dämmung) + Case 685 (Thermostat)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>2.6702</td><td>2.385</td><td>2.89174</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>9.2693</td><td>8.386</td><td>10.126306</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>1.9152</td><td>1.795326</td><td>2.138</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>7.0372</td><td>6.232</td><td>7.7232</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-900">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 900 &mdash; Schwerbau Basisfall
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 600, aber Betonstein-Wände und Bodenplatte statt Leichtbau</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Heizenergie Jan [kWh]</td><td>241.97</td><td>206.1</td><td>291.9</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Feb [kWh]</td><td>287.06</td><td>243.2</td><td>322.1</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Mar [kWh]</td><td>128.74</td><td>102.4</td><td>143.8</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Apr [kWh]</td><td>270.23</td><td>214.2</td><td>275.7</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie May [kWh]</td><td>36.1</td><td>20.1</td><td>37.5</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Jun [kWh]</td><td>0.0</td><td>0.0</td><td>0.0</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Heizenergie Jul [kWh]</td><td>-0.0</td><td>0.0</td><td>0.0</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Heizenergie Aug [kWh]</td><td>0.0</td><td>0.0</td><td>0.0</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Heizenergie Sep [kWh]</td><td>0.02</td><td>0.0</td><td>2.1</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Oct [kWh]</td><td>82.31</td><td>63.6</td><td>85.0</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Nov [kWh]</td><td>282.8</td><td>251.6</td><td>318.2</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Heizenergie Dec [kWh]</td><td>289.55</td><td>254.7</td><td>339.4</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Jan [kWh]</td><td>94.63</td><td>33.5</td><td>100.1</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Feb [kWh]</td><td>41.37</td><td>4.7</td><td>42.5</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Mar [kWh]</td><td>112.68</td><td>40.9</td><td>144.1</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Apr [kWh]</td><td>36.82</td><td>12.3</td><td>71.2</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie May [kWh]</td><td>124.4</td><td>98.4</td><td>210.7</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Jun [kWh]</td><td>396.22</td><td>365.8</td><td>512.9</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Jul [kWh]</td><td>386.85</td><td>365.5</td><td>510.7</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Aug [kWh]</td><td>515.44</td><td>485.7</td><td>620.9</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Sep [kWh]</td><td>525.98</td><td>458.9</td><td>573.9</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Oct [kWh]</td><td>346.47</td><td>260.9</td><td>358.6</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Kühlenergie Nov [kWh]</td><td>108.3</td><td>56.2</td><td>104.1</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Kühlenergie Dec [kWh]</td><td>103.85</td><td>38.1</td><td>95.9</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Jährliche Heizenergie [MWh]</td><td>1.6188</td><td>1.378891</td><td>1.81403</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>2.793</td><td>2.26713</td><td>3.345562</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>2.5618</td><td>2.44339</td><td>2.778478</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>3.177</td><td>2.556</td><td>3.768</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-900FF">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 900FF &mdash; Free-Float Schwerbau
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 900 (Schwerbau) ohne HVAC, freie Temperaturen</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Max. Lufttemperatur [°C]</td><td>45.59</td><td>43.252232</td><td>46.17</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Min. Lufttemperatur [°C]</td><td>1.92</td><td>0.6</td><td>2.49</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Mittl. Lufttemperatur [°C]</td><td>25.78</td><td>24.4623</td><td>26.72271</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-910">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 910 &mdash; Schwerbau + Süd-Verschattung
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Kombination Case 900 (Schwerbau) + Case 610 (Überhang)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>1.9798</td><td>1.647682</td><td>2.163</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>1.5642</td><td>1.19086</td><td>1.748174</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>2.5829</td><td>2.469025</td><td>2.799195</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>2.5176</td><td>2.081035</td><td>2.7648</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-920">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 920 &mdash; Schwerbau + Ost-/West-Fenster
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Kombination Case 900 + Case 620 (Ost-/West-Fenster)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>3.2561</td><td>2.956069</td><td>3.6067</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>2.9736</td><td>2.54887</td><td>3.257059</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>2.6386</td><td>2.512426</td><td>2.895</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>3.291</td><td>2.71</td><td>3.672</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-930">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 930 &mdash; Schwerbau + Ost-/West-Verschattung
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Kombination Case 900 + Case 630 (Ost-/West-Verschattung)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>3.8081</td><td>3.523647</td><td>4.3841</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>2.271</td><td>1.6538</td><td>2.161</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenheizlast [kW]</td><td>2.6551</td><td>2.536968</td><td>2.968</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>2.8334</td><td>2.335</td><td>3.052</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-940">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 940 &mdash; Schwerbau + Nachtabsenkung
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Kombination Case 900 + Case 640 (Nachtabsenkung)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>1.0398</td><td>0.863236</td><td>1.389</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>2.6864</td><td>2.20346</td><td>2.613</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenheizlast [kW]</td><td>3.2816</td><td>3.051914</td><td>3.882</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>3.1773</td><td>2.556</td><td>3.376435</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-950">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 950 &mdash; Schwerbau + Nachtlüftung
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Kombination Case 900 + Case 650 (Nachtlüftung); Masse speichert Nachtkühle</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>0.0</td><td>0.0</td><td>0.0</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>0.8158</td><td>0.586</td><td>0.90048</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>0.0</td><td>0.0</td><td>0.0</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>2.5655</td><td>2.054</td><td>2.928</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-950FF">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 950FF &mdash; Free-Float Schwerbau + Nachtlüftung
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 950 (Schwerbau + Nachtlüftung) ohne HVAC, freie Temperaturen</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Max. Lufttemperatur [°C]</td><td>37.84</td><td>36.126665</td><td>37.1</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Min. Lufttemperatur [°C]</td><td>-12.45</td><td>-13.36</td><td>-11.14</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Mittl. Lufttemperatur [°C]</td><td>15.04</td><td>14.35</td><td>15.522804</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-960">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 960 &mdash; Wintergarten (Sunspace)
+  <span style="background:#f8d7da;color:#721c24;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">FAIL</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Zwei-Zonen-Gebäude: Hinterzone (Leichtbau), Wintergarten (Schwerbau, 2 m tief)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>2.6982</td><td>2.522072</td><td>2.85954</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>0.6777</td><td>0.788958</td><td>0.955762</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenheizlast [kW]</td><td>1.8604</td><td>2.085</td><td>2.300402</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr><tr><td>Spitzenkühllast [kW]</td><td>1.2659</td><td>1.338487</td><td>1.479919</td><td style="background:#f8d7da;font-weight:bold;">FAIL</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-980">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 980 &mdash; Schwerbau + erhöhte Dämmung
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Kombination Case 900 + Case 680 (erhöhte Dämmung)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>0.387</td><td>0.245766</td><td>0.72</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>4.2289</td><td>3.501</td><td>5.207938</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>1.5791</td><td>1.25379</td><td>1.693</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>3.6399</td><td>2.93</td><td>4.2288</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-980FF">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 980FF &mdash; Free-Float Schwerbau + Dämmung
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Wie 980 (Schwerbau + Dämmung) ohne HVAC, höchste Sommertemperaturen</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Max. Lufttemperatur [°C]</td><td>53.72</td><td>48.540639</td><td>55.95</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Min. Lufttemperatur [°C]</td><td>11.88</td><td>7.3</td><td>13.11</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Mittl. Lufttemperatur [°C]</td><td>32.85</td><td>30.492</td><td>36.362946</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-985">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 985 &mdash; Schwerbau + 20/20
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Kombination Case 900 + Case 685 (Thermostat 20/20)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>2.5414</td><td>2.12021</td><td>2.870693</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>6.81</td><td>5.88</td><td>7.75909</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>2.5727</td><td>2.452163</td><td>2.785441</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>3.9736</td><td>3.208</td><td>4.5312</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+<details id="case-995">
+<summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
+  Case 995 &mdash; Schwerbau + Dämmung + 20/20
+  <span style="background:#d4edda;color:#155724;padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">PASS</span>
+</summary>
+<p style="color:#555;margin:4px 0 8px 0;">Kombination Case 900 + Case 695 (erhöhte Dämmung + Thermostat 20/20)</p><table>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Jährliche Heizenergie [MWh]</td><td>1.0747</td><td>0.755182</td><td>1.33</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Jährliche Kühlenergie [MWh]</td><td>7.6645</td><td>6.771</td><td>8.610787</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenheizlast [kW]</td><td>1.6483</td><td>1.369555</td><td>1.711</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr><tr><td>Spitzenkühllast [kW]</td><td>4.183</td><td>3.315</td><td>4.9248</td><td style="background:#d4edda;font-weight:bold;">PASS</td></tr>
+</tbody>
+</table>
+</details>
+</body>
+</html>

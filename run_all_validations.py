@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import re
+import shutil
 import subprocess
 import sys
 import logging
@@ -532,6 +533,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     # 6. Write reports
     write_overview_tsv(combined, out_dir / "overview_report.tsv")
     write_overview_html(combined, summary, out_dir / "overview_report.html", variant)
+
+    # Copy overview to project root for easy access
+    project_root = Path(__file__).resolve().parent
+    shutil.copy2(out_dir / "overview_report.html", project_root / "overview_report.html")
+    shutil.copy2(out_dir / "overview_report.tsv", project_root / "overview_report.tsv")
+    logging.info("Copied overview reports to %s", project_root)
 
     # 7. Print summary to console
     n_pass = (summary["Ergebnis"] == "PASS").sum()
