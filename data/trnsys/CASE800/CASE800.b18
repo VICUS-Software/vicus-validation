@@ -1,0 +1,629 @@
+*********************************************************************************
+*  TRNBuild   3.0.294
+*********************************************************************************
+*   BUILDING DESCRIPTIONS FILE TRNSYS
+*   FOR BUILDING:   
+*   GET BY WORKING WITH TRNBuild 3.0.294 for Windows
+*********************************************************************************
+*
+*--------------------------------------------------------------------------------
+*  C o m m e n t s
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  P r o j e c t
+*--------------------------------------------------------------------------------
+*+++ PROJECT
+*+++ TITLE=ASHRAE_STD140-2017 Update Section 5.2
+*+++ DESCRIPTION=CASE800
+*+++ CREATED=Transsolar Energietechnik GmbH
+*+++ ADDRESS=Curiestr. 2
+*+++ CITY=70563 Stuttgart, Germnay
+*+++ SWITCH=UNDEFINED
+*--------------------------------------------------------------------------------
+*  P r o p e r t i e s
+*--------------------------------------------------------------------------------
+PROPERTIES
+ DENSITY=1.016 : CAPACITY=1.015 : PRESSURE=83460.000 : HVAPOR=2454.0 : SIGMA=2.041e-007 : RTEMP=293.15
+*--- convective heat transfer coefficient calculation ---------------------
+ KFLOORUP=5.436 : EFLOORUP=0.33333 : KFLOORDOWN=2.736 : EFLOORDOWN=0.33333
+ KCEILUP=5.436 : ECEILUP=0.33333 : KCEILDOWN=2.736 : ECEILDOWN=0.33333
+ KVERTICAL=4.716 : EVERTICAL=0.33333
+*--- radiance parameters -------------------
+ SCENE_ROTATION_ANGLE=0 : GROUND_IDS= : GROUND_REFLECTANCE=0.2 : SHADER_REFLECTANCE=0
+ CALC_MODE=RAD : LATITUDE=48 : LONGITUDE=-9.2 : TIME_ZONE=-15 : SITE_ELEVATION=200
+ AB=5 : AD=1000 : AS=20 : AR=300 : AA=0.1
+ LR=6 : ST=0.15 : SJ=1 : LW=0.004 : DJ=0 : DS=0.2 : DR=2 : DP=512
+*--- comfort parameters -------------------
+ DIAM-SENSOR=0.07 : EPS-SENSOR=0.82 : REFL-SENSOR=0.47 : ELV_AIRSPEED1=0.3 : ELV_AIRSPEED2=0.7 : ELV_AIRSPEED3=1.2
+*--- other -------------------
+ FSCAL_TREGENZA=HIGH : SHM_MODE=0 : SURFGRID=0.2
+*--- daylight  -------------------
+ UDIMIN=100 : UDIMAX=2000 : DAMIN=300
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+TYPES
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  L a y e r s
+*--------------------------------------------------------------------------------
+LAYER PLASTERBOARD
+ CONDUCTIVITY=  0.576 : CAPACITY=   0.84 : DENSITY=    950 : PERT=      0 : PENRT=      0
+LAYER FIBERGLASS
+ CONDUCTIVITY=  0.144 : CAPACITY=   0.84 : DENSITY=     12 : PERT=      0 : PENRT=      0
+LAYER WOODSIDING
+ CONDUCTIVITY=  0.504 : CAPACITY=    0.9 : DENSITY=    530 : PERT=      0 : PENRT=      0
+LAYER TIMBERFLOOR
+ CONDUCTIVITY=  0.504 : CAPACITY=    1.2 : DENSITY=    650 : PERT=      0 : PENRT=      0
+LAYER INSULATION
+ RESISTANCE=  6.96528 : PERT=      0 : PENRT=      0
+LAYER INSULATION_HW
+ RESISTANCE=  6.99306 : PERT=      0 : PENRT=      0
+LAYER ROOFDECK
+ CONDUCTIVITY=  0.504 : CAPACITY=    0.9 : DENSITY=    530 : PERT=      0 : PENRT=      0
+LAYER CONCBLOCK
+ CONDUCTIVITY=  1.836 : CAPACITY=      1 : DENSITY=   1400
+LAYER FOAMINSUL
+ CONDUCTIVITY=  0.144 : CAPACITY=    1.4 : DENSITY=     10
+LAYER CONCRETE
+ CONDUCTIVITY=  4.068 : CAPACITY=      1 : DENSITY=   1400
+LAYER OPAQUE
+ CONDUCTIVITY=  3.816 : CAPACITY=   0.75 : DENSITY=   2500
+LAYER AIR_GAP
+ RESISTANCE=   0.0441
+LAYER R_OPAQUE
+ RESISTANCE=   0.05503
+*--------------------------------------------------------------------------------
+*  I n p u t s
+*--------------------------------------------------------------------------------
+INPUTS  Hconv_S5 Hconv_S6 Hconv_S7 Hconv_S8 Hconv_S4 Hconv_S3 Hconv_S2 Hconv_S1 TAMB
+INPUTS_DESCRIPTION
+ Hconv_S5 : kJ/hr.m^2.K : Surface 5 - External convective surface coefficient
+ Hconv_S6 : kJ/hr.m^2.K : Surface 4 - External convective surface coefficient 
+ Hconv_S7 : kJ/hr.m^2.K : Surface 7 - External convective surface coefficient
+ Hconv_S8 : kJ/hr.m^2.K : Surface 8 - External convective surface coefficient
+ Hconv_S4 : kJ/hr.m^2.K : Surface 4 - External convective surface coefficient
+ Hconv_S3 : kJ/hr.m^2.K : Surface 3 - External convective surface coefficient
+ Hconv_S2 : kJ/hr.m^2.K : Surface 2 - External convective surface coefficient
+ Hconv_S1 : kJ/hr.m^2.K : Surface 1 - External convective surface coefficient
+ TAMB : °C : outside air temperature
+*--------------------------------------------------------------------------------
+*  S c h e d u l e s
+*--------------------------------------------------------------------------------
+SCHEDULE HTSCHED
+ HOURS =0.000 7.000 23.000 24.0
+ VALUES=10. 20. 10. 10. 
+SCHEDULE VENTSCHED
+ HOURS =0.000 7.000 18.000 24.0
+ VALUES=13.12 0 13.12 13.12 
+SCHEDULE COOLSCHED
+ HOURS =0.000 7.000 18.000 24.0
+ VALUES=99. 27. 99. 99. 
+*--------------------------------------------------------------------------------
+*  C O N S T R U C T I O N (Wall, Floor, Ceiling,..)
+*--------------------------------------------------------------------------------
+CONSTRUCTION EXT3_LW
+ LAYERS   = PLASTERBOARD FIBERGLASS WOODSIDING 
+ THICKNESS= 0.012        0.066      0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S3
+CONSTRUCTION EXT4_LW
+ LAYERS   = PLASTERBOARD FIBERGLASS WOODSIDING 
+ THICKNESS= 0.012        0.066      0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S4
+CONSTRUCTION EXT5_LW
+ LAYERS   = PLASTERBOARD FIBERGLASS WOODSIDING 
+ THICKNESS= 0.012        0.066      0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S5
+CONSTRUCTION EXT8_LW
+ LAYERS   = PLASTERBOARD FIBERGLASS WOODSIDING 
+ THICKNESS= 0.012        0.066      0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S8
+CONSTRUCTION FLOOR_LW
+ LAYERS   = TIMBERFLOOR INSULATION 
+ THICKNESS= 0.025       0          
+ ABS-FRONT= 0.6 : ABS-BACK= 0.  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = FLOOR : HBACK= INPUT 1*Hconv_S1
+CONSTRUCTION ROOF_LW
+ LAYERS   = PLASTERBOARD FIBERGLASS ROOFDECK 
+ THICKNESS= 0.01         0.112      0.019    
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6 
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = CEILING : HBACK= INPUT 1*Hconv_S2
+*
+CONSTRUCTION EXT3_LW_INS
+ LAYERS   = PLASTERBOARD FOAMINSUL WOODSIDING 
+ THICKNESS= 0.012        0.25      0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S3
+CONSTRUCTION EXT4_LW_INS
+ LAYERS   = PLASTERBOARD FOAMINSUL WOODSIDING 
+ THICKNESS= 0.012        0.25      0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S4
+CONSTRUCTION EXT5_LW_INS
+ LAYERS   = PLASTERBOARD FOAMINSUL WOODSIDING 
+ THICKNESS= 0.012        0.25      0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S5
+CONSTRUCTION EXT8_LW_INS
+ LAYERS   = PLASTERBOARD FOAMINSUL WOODSIDING 
+ THICKNESS= 0.012        0.25      0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S8
+CONSTRUCTION FLOOR_LW_INS
+ LAYERS   = TIMBERFLOOR INSULATION 
+ THICKNESS= 0.025       0          
+ ABS-FRONT= 0.6 : ABS-BACK= 0  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = FLOOR : HBACK= INPUT 1*Hconv_S1
+CONSTRUCTION ROOF_LW_INS
+ LAYERS   = PLASTERBOARD FIBERGLASS ROOFDECK 
+ THICKNESS= 0.01         0.400      0.019    
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6 
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = CEILING : HBACK= INPUT 1*Hconv_S2
+*
+CONSTRUCTION EXT3_HW
+ LAYERS   = CONCBLOCK FOAMINSUL WOODSIDING 
+ THICKNESS= 0.1       0.0615    0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S3
+CONSTRUCTION EXT4_HW
+ LAYERS   = CONCBLOCK FOAMINSUL WOODSIDING 
+ THICKNESS= 0.1       0.0615    0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S4
+CONSTRUCTION EXT5_HW
+ LAYERS   = CONCBLOCK FOAMINSUL WOODSIDING 
+ THICKNESS= 0.1       0.0615    0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S5
+CONSTRUCTION EXT8_HW
+ LAYERS   = CONCBLOCK FOAMINSUL WOODSIDING 
+ THICKNESS= 0.1       0.0615    0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S8
+CONSTRUCTION FLOOR_HW
+ LAYERS   = CONCRETE INSULATION_HW 
+ THICKNESS= 0.08     0          
+ ABS-FRONT= 0.6 : ABS-BACK= 0.  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = FLOOR : HBACK= INPUT 1*Hconv_S1
+CONSTRUCTION ROOF_HW
+ LAYERS   = PLASTERBOARD FIBERGLASS ROOFDECK 
+ THICKNESS= 0.01         0.1118      0.019    
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6 
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = CEILING : HBACK= INPUT 1*Hconv_S2
+*
+CONSTRUCTION EXT3_HW_INS
+ LAYERS   = CONCBLOCK FOAMINSUL WOODSIDING 
+ THICKNESS= 0.1       0.2452    0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S3
+CONSTRUCTION EXT4_HW_INS
+ LAYERS   = CONCBLOCK FOAMINSUL WOODSIDING 
+ THICKNESS= 0.1       0.2452    0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S4
+CONSTRUCTION EXT5_HW_INS
+ LAYERS   = CONCBLOCK FOAMINSUL WOODSIDING 
+ THICKNESS= 0.1       0.2452    0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S5
+CONSTRUCTION EXT8_HW_INS
+ LAYERS   = CONCBLOCK FOAMINSUL WOODSIDING 
+ THICKNESS= 0.1       0.2452    0.009      
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S8
+CONSTRUCTION FLOOR_HW_INS
+ LAYERS   = CONCRETE INSULATION_HW 
+ THICKNESS= 0.08     0          
+ ABS-FRONT= 0.6 : ABS-BACK= 0.  
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = FLOOR : HBACK= INPUT 1*Hconv_S1
+CONSTRUCTION ROOF_HW_INS
+ LAYERS   = PLASTERBOARD FIBERGLASS ROOFDECK 
+ THICKNESS= 0.01         0.400      0.019    
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6 
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = CEILING : HBACK= INPUT 1*Hconv_S2
+*
+CONSTRUCTION OPQ_WALL
+ LAYERS   = R_OPAQUE
+ THICKNESS= 0
+ ABS-FRONT= 0.6 : ABS-BACK= 0.6 
+ EPS-FRONT= 0.9   : EPS-BACK= 0.9  
+ HFRONT   = VERTICAL : HBACK= INPUT 1*Hconv_S6
+*--------------------------------------------------------------------------------
+*  W i n d o w s
+*--------------------------------------------------------------------------------
+WINDOW DblPaneClr_S6
+ WINID=600 : HINSIDE=VERTICAL : HOUTSIDE=INPUT 1*Hconv_S6 : SLOPE=90 : SPACID=5 : WWID=3 : WHEIG=2 : FFRAME=0 : UFRAME=5.68 : ABSFRAME=0.9 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.1 : ;
+ CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0 : ITSHADECLOSE=648 : ITSHADEOPEN=576 : FLOWTOAIRNODE=1 : PERT=0 : PENRT=0 : RADMATERIAL=undefined : RADMATERIAL_SHD1=undefined
+WINDOW DblPaneClr_S7
+ WINID=600 : HINSIDE=VERTICAL : HOUTSIDE=INPUT 1*Hconv_S7 : SLOPE=90 : SPACID=5 : WWID=3 : WHEIG=2 : FFRAME=0 : UFRAME=5.68 : ABSFRAME=0.9 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.1 : ;
+ CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0 : ITSHADECLOSE=648 : ITSHADEOPEN=576 : FLOWTOAIRNODE=1 : PERT=0 : PENRT=0 : RADMATERIAL=undefined : RADMATERIAL_SHD1=undefined
+
+WINDOW DblPaneLowE_S6
+ WINID=660 : HINSIDE=VERTICAL : HOUTSIDE=INPUT 1*Hconv_S6 : SLOPE=90 : SPACID=5 : WWID=3 : WHEIG=2 : FFRAME=0 : UFRAME=5.68 : ABSFRAME=0.9 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.1 : ;
+ CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0 : ITSHADECLOSE=648 : ITSHADEOPEN=576 : FLOWTOAIRNODE=1 : PERT=0 : PENRT=0 : RADMATERIAL=undefined : RADMATERIAL_SHD1=undefined
+WINDOW DblPaneLowE_S7
+ WINID=660 : HINSIDE=VERTICAL : HOUTSIDE=INPUT 1*Hconv_S7 : SLOPE=90 : SPACID=5 : WWID=3 : WHEIG=2 : FFRAME=0 : UFRAME=5.68 : ABSFRAME=0.9 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.1 : ;
+ CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0 : ITSHADECLOSE=648 : ITSHADEOPEN=576 : FLOWTOAIRNODE=1 : PERT=0 : PENRT=0 : RADMATERIAL=undefined : RADMATERIAL_SHD1=undefined
+
+WINDOW SglPane_S6
+ WINID=670 : HINSIDE=VERTICAL : HOUTSIDE=INPUT 1*Hconv_S6 : SLOPE=90 : SPACID=5 : WWID=3 : WHEIG=2 : FFRAME=0 : UFRAME=5.68 : ABSFRAME=0.9 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.1 : ;
+ CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0 : ITSHADECLOSE=648 : ITSHADEOPEN=576 : FLOWTOAIRNODE=1 : PERT=0 : PENRT=0 : RADMATERIAL=undefined : RADMATERIAL_SHD1=undefined
+WINDOW SglPane_S7
+ WINID=670 : HINSIDE=VERTICAL : HOUTSIDE=INPUT 1*Hconv_S7 : SLOPE=90 : SPACID=5 : WWID=3 : WHEIG=2 : FFRAME=0 : UFRAME=5.68 : ABSFRAME=0.9 : RISHADE=0 : RESHADE=0 : REFLISHADE=0.5 : REFLOSHADE=0.1 : ;
+ CCISHADE=0.5 : EPSFRAME=0.9 : EPSISHADE=0 : ITSHADECLOSE=648 : ITSHADEOPEN=576 : FLOWTOAIRNODE=1 : PERT=0 : PENRT=0 : RADMATERIAL=undefined : RADMATERIAL_SHD1=undefined
+*--------------------------------------------------------------------------------
+*  G a i n s / L o s s e s
+*--------------------------------------------------------------------------------
+GAIN INTGAIN
+ CONVECTIVE=0.4 : RADIATIVE=0.6 : HUMIDITY=0 : ELPOWERFRAC=0 :  ABSOLUTE : CATEGORY=MISCELLANEOUS
+*--------------------------------------------------------------------------------
+*  C o m f o r t
+*--------------------------------------------------------------------------------
+*--------------------------------------------------------------------------------
+*  I n f i l t r a t i o n
+*--------------------------------------------------------------------------------
+INFILTRATION INFIL
+ AIRCHANGE=0.5
+*--------------------------------------------------------------------------------
+*  V e n t i l a t i o n
+*--------------------------------------------------------------------------------
+VENTILATION VENT
+ TEMPERATURE=OUTSIDE
+ AIRCHANGE=0
+ SPECFANPOWER=0
+ SENSHR=0
+ RELMINHUM=OUTSIDE
+ RELMAXHUM=OUTSIDE
+ CALCQAHU=0
+*--------------------------------------------------------------------------------
+*  C o o l i n g
+*--------------------------------------------------------------------------------
+COOLING COOL
+ ON=27
+ POWER=999999999
+ HUMIDITY=100
+ ELPOWERFRAC=0
+ AREA_RELATED_POWER=0
+*--------------------------------------------------------------------------------
+*  H e a t i n g
+*--------------------------------------------------------------------------------
+HEATING HEAT
+ ON=20
+ POWER=999999999
+ HUMIDITY=0
+ RRAD=0
+ ELPOWERFRAC=0
+ AREA_RELATED_POWER=0
+*--------------------------------------------------------------------------------
+*  D a y l i g h t   C o n t r o l 
+*--------------------------------------------------------------------------------
+*
+*--------------------------------------------------------------------------------
+*  Z o n e s
+*--------------------------------------------------------------------------------
+ZONES MAIN
+*--------------------------------------------------------------------------------
+*  O r i e n t a t i o n s
+*--------------------------------------------------------------------------------
+HEMISPHERE NORTHERN
+ORIENTATIONS H_0_0 S_0_90 W_90_90 N_180_90 E_270_90 H_0_180
+INTERNAL_CALCULATION H_0_0 S_0_90 W_90_90 N_180_90 E_270_90 H_0_180
+*
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+BUILDING
+*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+*
+*--------------------------------------------------------------------------------
+*  Z o n e  MAIN  /  A i r n o d e  MAIN
+*--------------------------------------------------------------------------------
+ZONE MAIN
+RADIATIONMODE
+ BEAM=DETAILED : DIFFUSE=DETAILED : LONGWAVE=DETAILED : GEOMODE=3D_DATA : FSOLAIR=0
+DAYLIGHTMODE
+ DLSHADE =-1
+AIRNODE MAIN
+FLOOR  =FLOOR_HW     : SURF=  1 : AREA=        48 : EXTERNAL : ORI=H_0_180 : FSKY=0 : GEOSURF=1
+ROOF  =ROOF_HW     : SURF=  2 : AREA=        48 : EXTERNAL : ORI=H_0_0 : FSKY=1
+WALL  =EXT3_HW     : SURF=  3 : AREA=      21.6 : EXTERNAL : ORI=N_180_90 : FSKY=0.5
+WALL  =EXT4_HW     : SURF=  4 : AREA=      16.2 : EXTERNAL : ORI=E_270_90 : FSKY=0.5
+WALL  =EXT5_HW     : SURF=  5 : AREA=       9.6 : EXTERNAL : ORI=S_0_90 : FSKY=0.5
+WALL  =OPQ_WALL   : SURF=  6 : AREA=         6 : EXTERNAL : ORI=S_0_90 : FSKY=0.5
+WALL  =OPQ_WALL   : SURF=  7 : AREA=         6 : EXTERNAL : ORI=S_0_90 : FSKY=0.5
+WALL  =EXT8_HW     : SURF=  8 : AREA=      16.2 : EXTERNAL : ORI=W_90_90 : FSKY=0.5
+ REGIME
+ GAIN        = INTGAIN    : SCALE= 720 : GEOPOS= 0 : SCALE2= 1 : FRAC_REFAREA= -1
+ INFILTRATION = INFIL
+ VENTILATION = VENT
+ COOLING     = COOL
+ HEATING     = HEAT
+ CAPACITANCE = 133.649  : VOLUME= 129.6   : REFAREA= 48       : TINITIAL= 20      : PHINITIAL= 50      : WCAPR= 1
+*--------------------------------------------------------------------------------
+*  O u t p u t s
+*--------------------------------------------------------------------------------
+OUTPUTS
+ TRANSFER : TIMEBASE=1.000
+ AIRNODES = MAIN 
+ NTYPES =   1 : TAIR - air temperature of airnode
+        =   9 : RELHUM - relativ humidity of airnode air
+        =  30 : QHEAT - sensible heating demand of airnode (positive values)
+        =  31 : QCOOL - sensible cooling demand of airnode (positive values)
+ AIRNODES = MAIN 
+ NTYPES =  12 : QSOLTR - total shortwave solar radiation transmitted through external windows of airnode (but not kept 100 % in airnode)
+ AIRNODES = MAIN 
+ NTYPES =  85 : SURF = 6, 7,  : QRHEA - radiative part of sensible heating demand absorbed on inside surface of wall or window
+        =  86 : SURF = 6, 7,  : Requiv - equivalent resistance between the surface and the starnode
+ AIRNODES = MAIN 
+ NTYPES = 116 : SURF = 3, 5, 4, 8, 2,  : IT - Incident total radiation on outside of external surfaces (no shading effects)     [kJ/hr]
+        = 113 : SURF = 3, 5, 4, 8, 2,  : AREA - surface area
+        =  18 : SURF = 5, 6, 7, 8, 4, 3, 2, 1,  : TSO - outside surface temperature
+ AIRNODES = MAIN 
+ NTYPES = 108 : SURF = 6, 2, 1, 3, 4, 8, 5,  : HCONVI - eff. inside conv. heat transfer coeff (FRONT)
+        
+*--------------------------------------------------------------------------------
+*  E n d
+*--------------------------------------------------------------------------------
+END
+
+_EXTENSION_WINPOOL_START_
+BERKELEY LAB WINDOW v7.4.8.0  DOE-2 Data File : Multi Band Calculation
+Unit System : SI
+Name        : DOE-2 WINDOW LIB
+Desc        : Case600-W7-DblPaneClr-ID600
+Window ID   : 600 
+Tilt        : 90.0
+Glazings    : 2
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Air       12.0 0.02407  7.760  1.722  4.940  1.292 -0.0046  0.720 -0.0002 
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.703 0.702 0.699 0.692 0.678 0.646 0.577 0.438 0.208 0.000 0.601
+Abs1  0.096 0.097 0.099 0.102 0.106 0.112 0.119 0.127 0.130 0.000 0.110
+Abs2  0.072 0.073 0.074 0.075 0.077 0.078 0.077 0.070 0.050 0.000 0.073
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.128 0.128 0.128 0.130 0.139 0.164 0.227 0.365 0.612 1.000 0.206
+Rbsol 0.128 0.128 0.128 0.130 0.139 0.164 0.227 0.365 0.612 1.000 0.206
+Tvis  0.814 0.814 0.813 0.809 0.797 0.766 0.693 0.537 0.273 0.000 0.712
+Rfvis 0.150 0.150 0.150 0.153 0.164 0.193 0.264 0.418 0.682 1.000 0.238
+Rbvis 0.150 0.150 0.150 0.153 0.164 0.193 0.264 0.418 0.682 1.000 0.238
+SHGC  0.762 0.762 0.760 0.754 0.741 0.711 0.643 0.501 0.259 0.000 0.663
+Tvis_daylight: 0.814
+Layer ID#          102      102        0        0        0        0 
+Tir              0.000    0.000        0        0        0        0
+Emis F           0.840    0.840        0        0        0        0
+Emis B           0.840    0.840        0        0        0        0
+Thickness(mm)      3.0      3.0        0        0        0        0
+Cond(W/m2-K     )328.1    328.1        0        0        0        0    
+Spectral File  CLEAR_3.DAT  CLEAR_3.DAT         None         None         None         None
+
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+   0        0.00   4.00  3.39  7.01  2.14 2.14  2.27 2.27  2.34 2.34  2.52 2.52 
+   0        6.71  30.84  3.23  7.08  2.74 2.74  2.84 2.84  2.92 2.92  3.16 3.16 
+ 783        0.00   4.00  3.58  6.59  2.14 2.14  2.27 2.27  2.34 2.34  2.52 2.52 
+ 783        6.71  30.84  3.28  6.94  2.74 2.74  2.84 2.84  2.92 2.92  3.16 3.16 
+ 
+BERKELEY LAB WINDOW v7.4.8.0  DOE-2 Data File : Multi Band Calculation
+
+Unit System : SI
+Name        : DOE-2 WINDOW LIB
+Desc        : Case660-W7-DblPaneLowE-ID660
+Window ID   : 660 
+Tilt        : 90.0
+Glazings    : 2
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1 Argon     12.0 0.01635  5.149  2.100  6.451  1.782 -0.0063  0.670 -0.0001 
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.394 0.397 0.391 0.383 0.373 0.353 0.310 0.228 0.108 0.000 0.329
+Abs1  0.195 0.197 0.204 0.209 0.211 0.215 0.230 0.247 0.213 0.001 0.215
+Abs2  0.031 0.031 0.031 0.032 0.032 0.033 0.032 0.029 0.021 0.000 0.031
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.380 0.375 0.374 0.376 0.384 0.398 0.427 0.496 0.658 0.999 0.415
+Rbsol 0.349 0.344 0.342 0.342 0.347 0.360 0.393 0.476 0.652 1.000 0.384
+Tvis  0.650 0.654 0.645 0.633 0.618 0.586 0.515 0.377 0.179 0.000 0.545
+Rfvis 0.250 0.244 0.242 0.244 0.254 0.275 0.314 0.404 0.601 0.999 0.298
+Rbvis 0.204 0.198 0.197 0.201 0.213 0.239 0.295 0.424 0.669 1.000 0.274
+SHGC  0.433 0.436 0.430 0.424 0.414 0.395 0.353 0.269 0.140 0.000 0.369
+Tvis_daylight: 0.65
+Layer ID#         1042      102        0        0        0        0 
+Tir              0.000    0.000        0        0        0        0
+Emis F           0.840    0.840        0        0        0        0
+Emis B           0.047    0.840        0        0        0        0
+Thickness(mm)      3.2      3.0        0        0        0        0
+Cond(W/m2-K     )314.5    328.1        0        0        0        0    
+Spectral File  CSR42_3.afg  CLEAR_3.DAT         None         None         None         None
+
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+   0        0.00   4.00  3.29  6.80  1.17 1.17  1.15 1.15  1.18 1.18  1.23 1.23 
+   0        6.71  30.84  3.20  6.86  1.39 1.39  1.27 1.27  1.30 1.30  1.36 1.36 
+ 783        0.00   4.00  3.63  5.77  1.17 1.17  1.15 1.15  1.18 1.18  1.23 1.23 
+ 783        6.71  30.84  3.29  6.62  1.39 1.39  1.27 1.27  1.30 1.30  1.36 1.36 
+
+
+BERKELEY LAB WINDOW v7.4.8.0  DOE-2 Data File : Multi Band Calculation
+
+Unit System : SI
+Name        : DOE-2 WINDOW LIB
+Desc        : Case670-W7-SglPane-ID670
+Window ID   : 670 
+Tilt        : 90.0
+Glazings    : 1
+Frame       :  1 Al w/break            5.680
+Spacer      :  1 Class1                2.330  -0.010   0.138
+Total Height: 1500.0 mm
+Total Width : 1200.0 mm
+Glass Height: 1385.7 mm
+Glass Width : 1085.7 mm
+Mullion     : None
+Gap        Thick    Cond  dCond    Vis   dVis   Dens   dDens     Pr     dPr
+1              0       0      0      0      0      0       0      0       0
+2              0       0      0      0      0      0       0      0       0
+3              0       0      0      0      0      0       0      0       0
+4              0       0      0      0      0      0       0      0       0
+5              0       0      0      0      0      0       0      0       0
+Angle     0    10    20    30    40    50    60    70    80    90 Hemis
+Tsol  0.834 0.833 0.831 0.827 0.818 0.797 0.749 0.637 0.389 0.000 0.753
+Abs1  0.091 0.092 0.094 0.096 0.100 0.104 0.108 0.110 0.105 0.000 0.101
+Abs2      0     0     0     0     0     0     0     0     0     0     0
+Abs3      0     0     0     0     0     0     0     0     0     0     0
+Abs4      0     0     0     0     0     0     0     0     0     0     0
+Abs5      0     0     0     0     0     0     0     0     0     0     0
+Abs6      0     0     0     0     0     0     0     0     0     0     0
+Rfsol 0.075 0.075 0.075 0.077 0.082 0.099 0.143 0.253 0.506 1.000 0.136
+Rbsol 0.075 0.075 0.075 0.077 0.082 0.099 0.143 0.253 0.506 1.000 0.136
+Tvis  0.899 0.899 0.898 0.896 0.889 0.870 0.822 0.705 0.441 0.000 0.822
+Rfvis 0.083 0.083 0.083 0.085 0.091 0.109 0.156 0.272 0.536 1.000 0.148
+Rbvis 0.083 0.083 0.083 0.085 0.091 0.109 0.156 0.272 0.536 1.000 0.148
+SHGC  0.860 0.860 0.858 0.855 0.846 0.827 0.780 0.669 0.419 0.000 0.782
+Tvis_daylight: 0.899
+Layer ID#          102        0        0        0        0        0 
+Tir              0.000        0        0        0        0        0
+Emis F           0.840        0        0        0        0        0
+Emis B           0.840        0        0        0        0        0
+Thickness(mm)      3.0        0        0        0        0        0
+Cond(W/m2-K     )328.1        0        0        0        0        0    
+Spectral File  CLEAR_3.DAT         None         None         None         None         None
+
+Overall and Center of Glass Ig U-values (W/m2-K)
+Outdoor Temperature                 -17.8 C      15.6 C      26.7 C      37.8 C
+Solar      WdSpd  hcout hrout  hin
+(W/m2)     (m/s)     (W/m2-K)
+   0        0.00   4.00  3.54  7.16  3.63 3.63  3.67 3.67  3.75 3.75  4.11 4.11 
+   0        6.71  30.84  3.30  7.26  5.88 5.88  5.51 5.51  5.53 5.53  6.22 6.22 
+ 783        0.00   4.00  3.64  7.08  3.63 3.63  3.67 3.67  3.75 3.75  4.11 4.11 
+ 783        6.71  30.84  3.33  7.25  5.88 5.88  5.51 5.51  5.53 5.53  6.22 6.22 
+*** END OF LIBRARY ***
+************************************************************************************************************
+*WinID   Description                              Design         U-Value g-value T-sol Rf-sol T-vis-daylight
+************************************************************************************************************
+   600   Case600-W7-DblPaneClr-ID600              3/12/3           2.92  0.762  0.703  0.128  0.814
+   660   Case660-W7-DblPaneLowE-ID660             3.2/12/3         1.3  0.433  0.394  0.38  0.65
+   670   Case670-W7-SglPane-ID670                 3                5.53  0.86  0.834  0.075  0.899
+_EXTENSION_WINPOOL_END_
+
+_EXTENSION_BuildingGeometry_START_
+vertex 1 8.000000000000 0.000000000000 0.000000000000
+vertex 2 0.000000000000 0.000000000000 0.000000000000
+vertex 3 0.000000000000 6.000000000000 0.000000000000
+vertex 4 8.000000000000 6.000000000000 0.000000000000
+vertex 5 0.000000000000 0.000000000000 2.700000000000
+vertex 6 8.000000000000 0.000000000000 2.700000000000
+vertex 7 8.000000000000 6.000000000000 2.700000000000
+vertex 8 0.000000000000 6.000000000000 2.700000000000
+vertex 9 8.000000000000 6.000000000000 2.700000000000
+vertex 10 8.000000000000 6.000000000000 0.000000000000
+vertex 11 0.000000000000 6.000000000000 0.000000000000
+vertex 12 0.000000000000 6.000000000000 2.700000000000
+vertex 13 8.000000000000 0.000000000000 2.700000000000
+vertex 14 8.000000000000 0.000000000000 0.000000000000
+vertex 15 8.000000000000 6.000000000000 0.000000000000
+vertex 16 8.000000000000 6.000000000000 2.700000000000
+vertex 17 0.000000000000 0.000000000000 2.700000000000
+vertex 18 0.000000000000 0.000000000000 0.000000000000
+vertex 19 8.000000000000 0.000000000000 0.000000000000
+vertex 20 8.000000000000 0.000000000000 2.700000000000
+vertex 21 4.500000000000 0.000000000000 2.200000000000
+vertex 22 4.500000000000 0.000000000000 0.200000000000
+vertex 23 7.500000000000 0.000000000000 0.200000000000
+vertex 24 7.500000000000 0.000000000000 2.200000000000
+vertex 25 0.500000000000 0.000000000000 2.200000000000
+vertex 26 0.500000000000 0.000000000000 0.200000000000
+vertex 27 3.500000000000 0.000000000000 0.200000000000
+vertex 28 3.500000000000 0.000000000000 2.200000000000
+vertex 29 0.000000000000 6.000000000000 2.700000000000
+vertex 30 0.000000000000 6.000000000000 0.000000000000
+vertex 31 0.000000000000 0.000000000000 0.000000000000
+vertex 32 0.000000000000 0.000000000000 2.700000000000
+
+
+zone MAIN
+wall 1 1 2 3 4
+wall 2 5 6 7 8
+wall 3 9 10 11 12
+wall 4 13 14 15 16
+wall 5 17 18 19 20
+window 6 21 22 23 24
+window 7 25 26 27 28
+wall 8 29 30 31 32
+_EXTENSION_BuildingGeometry_END_
+
+
+_EXTENSION_VirtualSurfaceGeometry_START_
+_EXTENSION_VirtualSurfaceGeometry_END_
+
+
+_EXTENSION_ExternalShadingGeometry_START_
+ 
+_EXTENSION_ExternalShadingGeometry_END_
+
+
+_EXTENSION_GeoPositionGeometry_START_
+_EXTENSION_GeoPositionGeometry_END_
+
+
+_EXTENSION_DaylightSensorPoints_START_
+_EXTENSION_DaylightSensorPoints_END_
+
+
+_EXTENSION_AdditionalDaylightGeometry_START_
+_EXTENSION_AdditionalDaylightGeometry_END_
+

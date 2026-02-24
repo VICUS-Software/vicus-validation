@@ -1,0 +1,3 @@
+VICUS room id	NANDRAD room id	VICUS building name	VICUS building level name	VICUS room name	NANDRAD room name	zone template id	zone template name	Floor area [m2]	Volume [m3]
+3	3	Case 610	1. floor	Room	Case 610.1. floor.Room(ID=3)	1240001		48.00	129.60
+VICUS component instance id	NANDRAD construction instance id
