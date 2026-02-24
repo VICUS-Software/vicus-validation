@@ -81,9 +81,9 @@ Case	Metrik	NANDRAD	Ref Min	Ref Max	Status
 900	Heizenergie Mar [kWh]	128.74	102.4	143.8	PASS
 900	Heizenergie Apr [kWh]	270.23	214.2	275.7	PASS
 900	Heizenergie May [kWh]	36.1	20.1	37.5	PASS
-900	Heizenergie Jun [kWh]	0.0	0.0	0.0	FAIL
-900	Heizenergie Jul [kWh]	-0.0	0.0	0.0	FAIL
-900	Heizenergie Aug [kWh]	0.0	0.0	0.0	FAIL
+900	Heizenergie Jun [kWh]	0.0	0.0	0.0	PASS
+900	Heizenergie Jul [kWh]	-0.0	0.0	0.0	PASS
+900	Heizenergie Aug [kWh]	0.0	0.0	0.0	PASS
 900	Heizenergie Sep [kWh]	0.02	0.0	2.1	PASS
 900	Heizenergie Oct [kWh]	82.31	63.6	85.0	PASS
 900	Heizenergie Nov [kWh]	282.8	251.6	318.2	PASS

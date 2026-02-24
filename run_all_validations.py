@@ -307,6 +307,67 @@ def write_overview_tsv(combined: pd.DataFrame, path: Path) -> None:
     logging.info("Overview TSV: %s", path)
 
 
+def write_overview_md(
+    combined: pd.DataFrame,
+    summary: pd.DataFrame,
+    path: Path,
+    variant: str,
+) -> None:
+    """Generate a GitHub-compatible Markdown overview report."""
+
+    total_cases = len(summary)
+    total_pass = int((summary["Ergebnis"] == "PASS").sum())
+    total_fail = int((summary["Ergebnis"] == "FAIL").sum())
+    total_error = int((summary["Ergebnis"] == "ERROR").sum())
+
+    lines: list[str] = []
+    lines.append(f"# BESTEST Validation Overview ({variant})")
+    lines.append("")
+    lines.append(f"**{total_pass} PASS** | **{total_fail} FAIL** | **{total_error} ERROR** | {total_cases} Testfalle")
+    lines.append("")
+
+    # Summary table
+    lines.append("## Zusammenfassung")
+    lines.append("")
+    lines.append("| Case | Beschreibung | Metriken | PASS | FAIL | SKIP | Ergebnis |")
+    lines.append("|------|-------------|----------|------|------|------|----------|")
+    for _, row in summary.iterrows():
+        c_title, _ = get_case_info(str(row["Case"]))
+        res = row["Ergebnis"]
+        emoji = {"PASS": "PASS", "FAIL": "**FAIL**", "ERROR": "**ERROR**"}.get(res, res)
+        lines.append(
+            f'| {row["Case"]} | {c_title} | {row["Metriken"]} '
+            f'| {row["PASS"]} | {row["FAIL"]} | {row["SKIP/N/A"]} | {emoji} |'
+        )
+    lines.append("")
+
+    # Detail sections per case
+    lines.append("## Details")
+    lines.append("")
+    for case, grp in combined.groupby("Case", sort=False):
+        c_title, c_desc = get_case_info(str(case))
+        case_res = summary.loc[summary["Case"] == case, "Ergebnis"].iloc[0]
+        res_label = {"PASS": "PASS", "FAIL": "**FAIL**", "ERROR": "**ERROR**"}.get(case_res, case_res)
+
+        lines.append(f"### Case {case} — {c_title} {res_label}")
+        if c_desc:
+            lines.append(f"_{c_desc}_")
+        lines.append("")
+        lines.append("| Metrik | NANDRAD | Ref Min | Ref Max | Status |")
+        lines.append("|--------|---------|---------|---------|--------|")
+        for _, row in grp.iterrows():
+            st = str(row["Status"])
+            st_fmt = f"**{st}**" if st == "FAIL" else st
+            lines.append(
+                f'| {row["Metrik"]} | {row["NANDRAD"]} '
+                f'| {row["Ref Min"]} | {row["Ref Max"]} | {st_fmt} |'
+            )
+        lines.append("")
+
+    path.write_text("\n".join(lines), encoding="utf-8")
+    logging.info("Overview MD: %s", path)
+
+
 def write_overview_html(
     combined: pd.DataFrame,
     summary: pd.DataFrame,
@@ -533,11 +594,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     # 6. Write reports
     write_overview_tsv(combined, out_dir / "overview_report.tsv")
     write_overview_html(combined, summary, out_dir / "overview_report.html", variant)
+    write_overview_md(combined, summary, out_dir / "overview_report.md", variant)
 
     # Copy overview to project root for easy access
     project_root = Path(__file__).resolve().parent
-    shutil.copy2(out_dir / "overview_report.html", project_root / "overview_report.html")
-    shutil.copy2(out_dir / "overview_report.tsv", project_root / "overview_report.tsv")
+    for ext in ("html", "tsv", "md"):
+        shutil.copy2(out_dir / f"overview_report.{ext}", project_root / f"overview_report.{ext}")
     logging.info("Copied overview reports to %s", project_root)
 
     # 7. Print summary to console
