@@ -1,0 +1,12 @@
+    	BSIMAC 				CSE	    			DeST 				Energy+				ESP-r				NewHASP				TRNSYS			
+Case	kW		Mo.	Day	Hr	kW		Mo.	Day	Hr	kW		Mo.	Day	Hr	kW		Mo.	Day	Hr	kW		Mo.	Day	Hr	kW		Mo.	Day	Hr	kW		Mo.	Day	Hr
+600 	3.255 	Nov	26 	8 	3.020 	Jan	1 	1 	3.035 	Jan	1 	0 	3.204 	Dec	31 	24 	3.228 	Jan	1 	1 	3.173 	Jan	1 	1 	3.359 	Jan	1 	1 
+610 	3.166 	Nov	26 	8 	3.021 	Jan	1 	1 	3.039 	Jan	1 	0 	3.192 	Dec	31 	24 	3.233 	Jan	1 	1 	3.158 	Jan	1 	1 	3.360 	Jan	1 	1 
+620 	3.145 	Dec	31 	24 	3.038 	Jan	1 	1 	3.068 	Jan	1 	0 	3.229 	Dec	31 	24 	3.253 	Jan	1 	1 	3.173 	Jan	1 	1 	3.385 	Jan	1 	1 
+630 	3.252 	Dec	31 	24 	3.039 	Jan	1 	1 	3.072 	Jan	1 	0 	3.207 	Dec	31 	24 	3.259 	Jan	1 	1 	3.154 	Jan	1 	1 	3.388 	Jan	1 	1 
+640 	4.633 	Feb	8 	9 	4.222 	Nov	26 	8 	4.658 	Nov	26 	7 	4.559 	Nov	26 	8 	4.101 	Nov	26 	8 						4.039 	Nov	26 	8
+900 	2.551 	Feb	8 	24 	2.443 	Feb	9 	6 	2.453 	Feb	9 	5 	2.687 	Feb	9 	6 	2.633 	Feb	9 	7 	2.707 	Feb	9 	6 	2.778 	Feb	9 	7 
+910 	2.761 	Feb	8 	24 	2.469 	Feb	9 	6 	2.474 	Feb	9 	5 	2.699 	Feb	9 	6 	2.684 	Feb	9 	7 	2.707 	Feb	9 	6 	2.799 	Feb	9 	6 
+920 	2.895 	Nov	26 	8 	2.512 	Feb	9 	6 	2.513 	Feb	9 	5 	2.770 	Feb	9 	6 	2.706 	Feb	9 	7 	2.731 	Feb	9 	6 	2.864 	Feb	9 	6 
+930 	2.968 	Dec	31 	24 	2.537 	Feb	9 	6 	2.549 	Feb	9 	5 	2.785 	Feb	9 	6 	2.765 	Feb	9 	6 	2.736 	Feb	9 	6 	2.900 	Feb	9 	6 
+940 	3.882 	Feb	8 	9 	3.052 	Jan	1 	9 	3.659 	Feb	9 	7 	3.143 	Dec	31 	9 	3.122 	Feb	9 	9 						3.405 	Jan	1 	9

@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NandradProject fileVersion="2.0">
+	<!--DirectoryPlaceholders section defines strings to be substituted with directories-->
+	<DirectoryPlaceholders>
+		<Placeholder name="Database">C:/Program Files/VICUS-Software/VICUS/resources</Placeholder>
+		<Placeholder name="User Database">C:/Users/s1267644/AppData/Roaming/VICUS</Placeholder>
+	</DirectoryPlaceholders>
+
+	<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+	<Project>
+		<ProjectInfo>
+			<Comment>Project file: C:/Users/s1267644/Nextcloud/Shared/2025_AndréGraf/Arbeit/Modelle/Case_600FF_v1/Case600FF_v1.vicus&#x0A;&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;&#x0A;&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;&#x0A;p, li { white-space: pre-wrap; }&#x0A;&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Helvetica&apos;; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;&#x0A;&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</Comment>
+			<Created>Fr Sep 12 14:11:17 2025</Created>
+		</ProjectInfo>
+		<Location>
+			<IBK:Parameter name="Latitude" unit="Deg">39.83</IBK:Parameter>
+			<IBK:Parameter name="Longitude" unit="Deg">-104.65</IBK:Parameter>
+			<IBK:Parameter name="Albedo" unit="%">20</IBK:Parameter>
+			<IBK:Flag name="PerezDiffuseRadiationModel">true</IBK:Flag>
+			<TimeZone>-7</TimeZone>
+			<ClimateFilePath>${Project Directory}/../climate/725650TYCST.epw</ClimateFilePath>
+			<Sensors>
+				<Sensor id="2000000">
+					<IBK:Parameter name="Orientation" unit="Deg">0</IBK:Parameter>
+					<IBK:Parameter name="Inclination" unit="Deg">0</IBK:Parameter>
+				</Sensor>
+				<Sensor id="2000001">
+					<IBK:Parameter name="Orientation" unit="Deg">0</IBK:Parameter>
+					<IBK:Parameter name="Inclination" unit="Deg">90</IBK:Parameter>
+				</Sensor>
+				<Sensor id="2000002">
+					<IBK:Parameter name="Orientation" unit="Deg">90</IBK:Parameter>
+					<IBK:Parameter name="Inclination" unit="Deg">90</IBK:Parameter>
+				</Sensor>
+				<Sensor id="2000003">
+					<IBK:Parameter name="Orientation" unit="Deg">180</IBK:Parameter>
+					<IBK:Parameter name="Inclination" unit="Deg">90</IBK:Parameter>
+				</Sensor>
+				<Sensor id="2000004">
+					<IBK:Parameter name="Orientation" unit="Deg">270</IBK:Parameter>
+					<IBK:Parameter name="Inclination" unit="Deg">90</IBK:Parameter>
+				</Sensor>
+			</Sensors>
+		</Location>
+		<SimulationParameter>
+			<IBK:Parameter name="InitialTemperature" unit="C">20</IBK:Parameter>
+			<IBK:Parameter name="InitialRelativeHumidity" unit="%">50</IBK:Parameter>
+			<IBK:Parameter name="DomesticWaterSensitiveHeatGainFraction" unit="---">0</IBK:Parameter>
+			<IBK:IntPara name="StartYear">2001</IBK:IntPara>
+			<Interval>
+				<IBK:Parameter name="Start" unit="d">0</IBK:Parameter>
+				<IBK:Parameter name="End" unit="d">365</IBK:Parameter>
+			</Interval>
+			<SolarLoadsDistributionModel>
+				<DistributionType>SurfaceTypeFactor</DistributionType>
+				<IBK:Parameter name="RadiationLoadFractionZone" unit="%">0</IBK:Parameter>
+				<IBK:Parameter name="RadiationLoadFractionFloor" unit="%">64</IBK:Parameter>
+				<IBK:Parameter name="RadiationLoadFractionCeiling" unit="%">17</IBK:Parameter>
+				<IBK:Parameter name="RadiationLoadFractionWalls" unit="%">19</IBK:Parameter>
+			</SolarLoadsDistributionModel>
+		</SimulationParameter>
+		<SolverParameter>
+			<IBK:Parameter name="RelTol" unit="---">1e-05</IBK:Parameter>
+			<IBK:Parameter name="AbsTol" unit="---">1e-10</IBK:Parameter>
+			<IBK:Parameter name="MaxTimeStep" unit="h">1</IBK:Parameter>
+			<IBK:Parameter name="MinTimeStep" unit="s">1e-08</IBK:Parameter>
+			<IBK:Parameter name="InitialTimeStep" unit="s">0.1</IBK:Parameter>
+			<IBK:Parameter name="NonlinSolverConvCoeff" unit="---">0.1</IBK:Parameter>
+			<IBK:Parameter name="IterativeSolverConvCoeff" unit="---">0.05</IBK:Parameter>
+			<IBK:Parameter name="DiscMinDx" unit="mm">2</IBK:Parameter>
+			<IBK:Parameter name="DiscStretchFactor" unit="---">4</IBK:Parameter>
+			<IBK:Parameter name="ViewfactorTileWidth" unit="cm">50</IBK:Parameter>
+			<IBK:Parameter name="SurfaceDiscretizationDensity" unit="---">1</IBK:Parameter>
+			<IBK:Parameter name="ControlTemperatureTolerance" unit="K">1e-05</IBK:Parameter>
+			<IBK:Parameter name="HydraulicNetworkAbsTol" unit="---">0.001</IBK:Parameter>
+			<IBK:Parameter name="HydraulicNetworkMassFluxScale" unit="---">1000</IBK:Parameter>
+			<IBK:Parameter name="HydraulicSolutionUpdateStep" unit="min">3</IBK:Parameter>
+			<IBK:IntPara name="PreILUWidth">3</IBK:IntPara>
+			<IBK:IntPara name="MaxKrylovDim">50</IBK:IntPara>
+			<IBK:IntPara name="MaxNonlinIter">3</IBK:IntPara>
+			<IBK:IntPara name="MaxOrder">5</IBK:IntPara>
+			<IBK:IntPara name="DiscMaxElementsPerLayer">20</IBK:IntPara>
+			<IBK:Flag name="KinsolDisableLineSearch">false</IBK:Flag>
+			<IBK:Flag name="HydraulicNewtonUsePrevInitConditions">true</IBK:Flag>
+			<IBK:Flag name="PreventSolvingHydraulicsInEveryStep">false</IBK:Flag>
+		</SolverParameter>
+		<Zones>
+			<Zone id="3" displayName="Case 600 FF.1. floor.Room(ID=3)" type="Active">
+				<IBK:Parameter name="Area" unit="m2">48</IBK:Parameter>
+				<IBK:Parameter name="Volume" unit="m3">129.6</IBK:Parameter>
+			</Zone>
+		</Zones>
+		<ConstructionInstances>
+			<ConstructionInstance id="2" displayName="Floor (ID=4)">
+				<ConstructionTypeId>1</ConstructionTypeId>
+				<IBK:Parameter name="Orientation" unit="Deg">270</IBK:Parameter>
+				<IBK:Parameter name="Inclination" unit="Deg">180</IBK:Parameter>
+				<IBK:Parameter name="Area" unit="m2">48</IBK:Parameter>
+				<InterfaceA id="1" zoneId="3" usage="Floor">
+					<!--Interface to 'Case 600 FF.1. floor.Room(ID=3)'-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">3.7</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+				</InterfaceA>
+				<InterfaceB id="2" zoneId="0" usage="Other">
+					<!--Interface to outside-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">5.2</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceLongWaveEmission modelType="Constant">
+						<IBK:Parameter name="Emissivity" unit="---">0.9</IBK:Parameter>
+					</InterfaceLongWaveEmission>
+				</InterfaceB>
+			</ConstructionInstance>
+			<ConstructionInstance id="4" displayName="Ceiling (ID=5)">
+				<ConstructionTypeId>2</ConstructionTypeId>
+				<IBK:Parameter name="Orientation" unit="Deg">90</IBK:Parameter>
+				<IBK:Parameter name="Inclination" unit="Deg">0</IBK:Parameter>
+				<IBK:Parameter name="Area" unit="m2">48</IBK:Parameter>
+				<InterfaceA id="1" zoneId="3" usage="Ceiling">
+					<!--Interface to 'Case 600 FF.1. floor.Room(ID=3)'-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">1.7</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+				</InterfaceA>
+				<InterfaceB id="2" zoneId="0" usage="Other">
+					<!--Interface to outside-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">21.8</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+					<InterfaceLongWaveEmission modelType="Constant">
+						<IBK:Parameter name="Emissivity" unit="---">0.9</IBK:Parameter>
+					</InterfaceLongWaveEmission>
+				</InterfaceB>
+			</ConstructionInstance>
+			<ConstructionInstance id="5" displayName="Wall Nord (ID=6)">
+				<ConstructionTypeId>3</ConstructionTypeId>
+				<IBK:Parameter name="Orientation" unit="Deg">0</IBK:Parameter>
+				<IBK:Parameter name="Inclination" unit="Deg">90</IBK:Parameter>
+				<IBK:Parameter name="Area" unit="m2">21.6</IBK:Parameter>
+				<InterfaceA id="1" zoneId="3" usage="Wall">
+					<!--Interface to 'Case 600 FF.1. floor.Room(ID=3)'-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">1.8</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+				</InterfaceA>
+				<InterfaceB id="2" zoneId="0" usage="Other">
+					<!--Interface to outside-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">21.6</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+					<InterfaceLongWaveEmission modelType="Constant">
+						<IBK:Parameter name="Emissivity" unit="---">0.9</IBK:Parameter>
+					</InterfaceLongWaveEmission>
+				</InterfaceB>
+			</ConstructionInstance>
+			<ConstructionInstance id="6" displayName="Wall East (ID=7)">
+				<ConstructionTypeId>3</ConstructionTypeId>
+				<IBK:Parameter name="Orientation" unit="Deg">90</IBK:Parameter>
+				<IBK:Parameter name="Inclination" unit="Deg">90</IBK:Parameter>
+				<IBK:Parameter name="Area" unit="m2">16.2</IBK:Parameter>
+				<InterfaceA id="1" zoneId="3" usage="Wall">
+					<!--Interface to 'Case 600 FF.1. floor.Room(ID=3)'-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">1.8</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+				</InterfaceA>
+				<InterfaceB id="2" zoneId="0" usage="Other">
+					<!--Interface to outside-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">21.6</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+					<InterfaceLongWaveEmission modelType="Constant">
+						<IBK:Parameter name="Emissivity" unit="---">0.9</IBK:Parameter>
+					</InterfaceLongWaveEmission>
+				</InterfaceB>
+			</ConstructionInstance>
+			<ConstructionInstance id="7" displayName="Wall South (ID=8)">
+				<ConstructionTypeId>3</ConstructionTypeId>
+				<IBK:Parameter name="Orientation" unit="Deg">180</IBK:Parameter>
+				<IBK:Parameter name="Inclination" unit="Deg">90</IBK:Parameter>
+				<IBK:Parameter name="Area" unit="m2">9.6</IBK:Parameter>
+				<InterfaceA id="1" zoneId="3" usage="Wall">
+					<!--Interface to 'Case 600 FF.1. floor.Room(ID=3)'-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">1.8</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+				</InterfaceA>
+				<InterfaceB id="2" zoneId="0" usage="Other">
+					<!--Interface to outside-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">21.6</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+					<InterfaceLongWaveEmission modelType="Constant">
+						<IBK:Parameter name="Emissivity" unit="---">0.9</IBK:Parameter>
+					</InterfaceLongWaveEmission>
+				</InterfaceB>
+			</ConstructionInstance>
+			<ConstructionInstance id="8" displayName="Wall West (ID=9)">
+				<ConstructionTypeId>3</ConstructionTypeId>
+				<IBK:Parameter name="Orientation" unit="Deg">270</IBK:Parameter>
+				<IBK:Parameter name="Inclination" unit="Deg">90</IBK:Parameter>
+				<IBK:Parameter name="Area" unit="m2">16.2</IBK:Parameter>
+				<InterfaceA id="1" zoneId="3" usage="Wall">
+					<!--Interface to 'Case 600 FF.1. floor.Room(ID=3)'-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">1.8</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+				</InterfaceA>
+				<InterfaceB id="2" zoneId="0" usage="Other">
+					<!--Interface to outside-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">21.6</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+					<InterfaceLongWaveEmission modelType="Constant">
+						<IBK:Parameter name="Emissivity" unit="---">0.9</IBK:Parameter>
+					</InterfaceLongWaveEmission>
+				</InterfaceB>
+			</ConstructionInstance>
+			<ConstructionInstance id="9" displayName="Surface south left (ID=16)">
+				<ConstructionTypeId>3</ConstructionTypeId>
+				<IBK:Parameter name="Orientation" unit="Deg">180</IBK:Parameter>
+				<IBK:Parameter name="Inclination" unit="Deg">90</IBK:Parameter>
+				<IBK:Parameter name="Area" unit="m2">6</IBK:Parameter>
+				<InterfaceA id="1" zoneId="3" usage="Wall">
+					<!--Interface to 'Case 600 FF.1. floor.Room(ID=3)'-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">4.5</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+				</InterfaceA>
+				<InterfaceB id="2" zoneId="0" usage="Other">
+					<!--Interface to outside-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">17.8</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+					<InterfaceLongWaveEmission modelType="Constant">
+						<IBK:Parameter name="Emissivity" unit="---">0.9</IBK:Parameter>
+					</InterfaceLongWaveEmission>
+				</InterfaceB>
+				<EmbeddedObjects>
+					<EmbeddedObject id="10" displayName="Window left (ID=18)">
+						<IBK:Parameter name="Area" unit="m2">5.99</IBK:Parameter>
+						<Window glazingSystemId="1040003" />
+					</EmbeddedObject>
+				</EmbeddedObjects>
+			</ConstructionInstance>
+			<ConstructionInstance id="11" displayName="Surface south right (ID=17)">
+				<ConstructionTypeId>3</ConstructionTypeId>
+				<IBK:Parameter name="Orientation" unit="Deg">180</IBK:Parameter>
+				<IBK:Parameter name="Inclination" unit="Deg">90</IBK:Parameter>
+				<IBK:Parameter name="Area" unit="m2">6</IBK:Parameter>
+				<InterfaceA id="1" zoneId="3" usage="Wall">
+					<!--Interface to 'Case 600 FF.1. floor.Room(ID=3)'-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">4.5</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+				</InterfaceA>
+				<InterfaceB id="2" zoneId="0" usage="Other">
+					<!--Interface to outside-->
+					<InterfaceHeatConduction modelType="Constant">
+						<IBK:Parameter name="HeatTransferCoefficient" unit="W/m2K">17.8</IBK:Parameter>
+					</InterfaceHeatConduction>
+					<InterfaceSolarAbsorption modelType="Constant">
+						<IBK:Parameter name="AbsorptionCoefficient" unit="---">0.6</IBK:Parameter>
+					</InterfaceSolarAbsorption>
+					<InterfaceLongWaveEmission modelType="Constant">
+						<IBK:Parameter name="Emissivity" unit="---">0.9</IBK:Parameter>
+					</InterfaceLongWaveEmission>
+				</InterfaceB>
+				<EmbeddedObjects>
+					<EmbeddedObject id="12" displayName="Window right (ID=20)">
+						<IBK:Parameter name="Area" unit="m2">5.99</IBK:Parameter>
+						<Window glazingSystemId="1040003" />
+					</EmbeddedObject>
+				</EmbeddedObjects>
+			</ConstructionInstance>
+		</ConstructionInstances>
+		<ConstructionTypes>
+			<ConstructionType id="3" displayName="Low-Mass Case: Exterior Wall">
+				<MaterialLayers>
+					<MaterialLayer thickness="0.012" matId="1010001" />
+					<MaterialLayer thickness="0.066" matId="1010002" />
+					<MaterialLayer thickness="0.009" matId="1010003" />
+				</MaterialLayers>
+			</ConstructionType>
+			<ConstructionType id="1" displayName="Low-Mass Case: Raised Floor">
+				<MaterialLayers>
+					<MaterialLayer thickness="0.025" matId="1010004" />
+					<MaterialLayer thickness="1.003" matId="1010005" />
+				</MaterialLayers>
+			</ConstructionType>
+			<ConstructionType id="2" displayName="Low-Mass Case: Roof">
+				<MaterialLayers>
+					<MaterialLayer thickness="0.01" matId="1010001" />
+					<MaterialLayer thickness="0.1118" matId="1010002" />
+					<MaterialLayer thickness="0.019" matId="1010006" />
+				</MaterialLayers>
+			</ConstructionType>
+		</ConstructionTypes>
+		<Materials>
+			<Material id="1010001" displayName="Plasterboard">
+				<IBK:Parameter name="Density" unit="kg/m3">950</IBK:Parameter>
+				<IBK:Parameter name="HeatCapacity" unit="J/kgK">840</IBK:Parameter>
+				<IBK:Parameter name="Conductivity" unit="W/mK">0.16</IBK:Parameter>
+			</Material>
+			<Material id="1010002" displayName="Fiberglass quilt">
+				<IBK:Parameter name="Density" unit="kg/m3">12</IBK:Parameter>
+				<IBK:Parameter name="HeatCapacity" unit="J/kgK">840</IBK:Parameter>
+				<IBK:Parameter name="Conductivity" unit="W/mK">0.04</IBK:Parameter>
+			</Material>
+			<Material id="1010003" displayName="Wood siding">
+				<IBK:Parameter name="Density" unit="kg/m3">530</IBK:Parameter>
+				<IBK:Parameter name="HeatCapacity" unit="J/kgK">900</IBK:Parameter>
+				<IBK:Parameter name="Conductivity" unit="W/mK">0.14</IBK:Parameter>
+			</Material>
+			<Material id="1010004" displayName="Timber flooring">
+				<IBK:Parameter name="Density" unit="kg/m3">650</IBK:Parameter>
+				<IBK:Parameter name="HeatCapacity" unit="J/kgK">1200</IBK:Parameter>
+				<IBK:Parameter name="Conductivity" unit="W/mK">0.14</IBK:Parameter>
+			</Material>
+			<Material id="1010005" displayName="Insulation">
+				<IBK:Parameter name="Density" unit="kg/m3">1</IBK:Parameter>
+				<IBK:Parameter name="HeatCapacity" unit="J/kgK">100</IBK:Parameter>
+				<IBK:Parameter name="Conductivity" unit="W/mK">0.04</IBK:Parameter>
+			</Material>
+			<Material id="1010006" displayName="Roofdeck">
+				<IBK:Parameter name="Density" unit="kg/m3">530</IBK:Parameter>
+				<IBK:Parameter name="HeatCapacity" unit="J/kgK">900</IBK:Parameter>
+				<IBK:Parameter name="Conductivity" unit="W/mK">0.14</IBK:Parameter>
+			</Material>
+		</Materials>
+		<WindowGlazingSystems>
+			<WindowGlazingSystem id="1040003" displayName="South Window Testcase 600" modelType="Simple">
+				<IBK:Parameter name="ThermalTransmittance" unit="W/m2K">5.0559</IBK:Parameter>
+				<IBK:Parameter name="SHGCHemis" unit="---">0.601</IBK:Parameter>
+				<LinearSplineParameter name="SHGC" interpolationMethod="linear">
+					<X unit="Deg">0 10 20 30 40 50 60 70 80 90 </X>
+					<Y unit="---">0.703 0.702 0.699 0.692 0.678 0.646 0.577 0.438 0.208 0 </Y>
+				</LinearSplineParameter>
+			</WindowGlazingSystem>
+		</WindowGlazingSystems>
+		<Schedules>
+			<ScheduleGroups>
+				<ScheduleGroup objectList="InternalLoads-Testfall 600FF">
+					<Schedule type="AllDays">
+						<StartDayOfTheYear>0</StartDayOfTheYear>
+						<EndDayOfTheYear>364</EndDayOfTheYear>
+						<DailyCycles>
+							<DailyCycle interpolation="Constant">
+								<TimePoints>0</TimePoints>
+								<Values>EquipmentHeatLoadPerAreaSchedule [W/m2]:4.16667;LightingHeatLoadPerAreaSchedule [W/m2]:0;PersonHeatLoadPerAreaSchedule [W/m2]:0;</Values>
+							</DailyCycle>
+						</DailyCycles>
+					</Schedule>
+				</ScheduleGroup>
+				<ScheduleGroup objectList="Ventilation-Testfall 600FF" />
+			</ScheduleGroups>
+		</Schedules>
+		<Models>
+			<NaturalVentilationModels>
+				<NaturalVentilationModel id="3" displayName="Testfall 600FF" modelType="Constant">
+					<ZoneObjectList>Ventilation-Testfall 600FF</ZoneObjectList>
+					<IBK:Parameter name="VentilationRate" unit="1/h">0.414</IBK:Parameter>
+				</NaturalVentilationModel>
+			</NaturalVentilationModels>
+			<InternalLoadsModels>
+				<InternalLoadsModel id="1" displayName="Testfall 600FF" modelType="Scheduled">
+					<ZoneObjectList>InternalLoads-Testfall 600FF</ZoneObjectList>
+					<IBK:Parameter name="EquipmentRadiationFraction" unit="---">0.6</IBK:Parameter>
+					<IBK:Parameter name="PersonRadiationFraction" unit="---">0</IBK:Parameter>
+					<IBK:Parameter name="LightingRadiationFraction" unit="---">0</IBK:Parameter>
+				</InternalLoadsModel>
+			</InternalLoadsModels>
+		</Models>
+		<Outputs>
+			<Definitions>
+				<OutputDefinition>					
+					<Quantity>AirTemperature</Quantity>
+					<ObjectListName>All zones</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>IdealHeatingLoad</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>All zones</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>IdealCoolingLoad</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>All zones</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>ConvectiveEquipmentHeatLoad</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>All zones</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>ConvectiveLightingHeatLoad</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>All zones</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>ConvectivePersonHeatLoad</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>All zones</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>ActiveLayerThermalLoad</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>objListCI</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>Temperature</Quantity>
+					<ObjectListName>Location</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>SWRadDirectNormal</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Location</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>SWRadDiffuseHorizontal</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Location</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>IdealCoolingLoad</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Outputs-1</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>IdealHeatingLoad</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Outputs-2</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>FluxShortWaveRadiationB</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Outputs-3</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>FluxShortWaveRadiationB</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Outputs-4</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>WindowHeatConductionLoad</Quantity>
+					<ObjectListName>All zones</ObjectListName>
+					<TimeType>Mean</TimeType>
+					<GridName>Hourly</GridName>
+					<FileName>WindowOutputs</FileName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>WindowSolarRadiationFluxSum</Quantity>
+					<ObjectListName>All zones</ObjectListName>
+					<TimeType>Mean</TimeType>
+					<GridName>Hourly</GridName>
+					<FileName>WindowOutputs</FileName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>WindowSolarRadiationLoad</Quantity>
+					<ObjectListName>All zones</ObjectListName>
+					<TimeType>Mean</TimeType>
+					<GridName>Hourly</GridName>
+					<FileName>WindowOutputs</FileName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>VentilationHeatLoad</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Outputs-6</ObjectListName>
+					<GridName>Hourly</GridName>
+				</OutputDefinition>				
+				<OutputDefinition>
+					<Quantity>GlobalSWRadOnPlane[2000000]</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Location</ObjectListName>
+					<GridName>Hourly</GridName>
+					<FileName>RadiationLoadsOutputs</FileName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>DirectSWRadOnPlane[2000000]</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Location</ObjectListName>
+					<GridName>Hourly</GridName>
+					<FileName>RadiationLoadsOutputs</FileName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>DiffuseSWRadOnPlane[2000000]</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Location</ObjectListName>
+					<GridName>Hourly</GridName>
+					<FileName>RadiationLoadsOutputs</FileName>
+				</OutputDefinition>
+				
+				<OutputDefinition>
+					<Quantity>GlobalSWRadOnPlane[2000001]</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Location</ObjectListName>
+					<GridName>Hourly</GridName>
+					<FileName>RadiationLoadsOutputs</FileName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>DirectSWRadOnPlane[2000001]</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Location</ObjectListName>
+					<GridName>Hourly</GridName>
+					<FileName>RadiationLoadsOutputs</FileName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>DiffuseSWRadOnPlane[2000001]</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Location</ObjectListName>
+					<GridName>Hourly</GridName>
+					<FileName>RadiationLoadsOutputs</FileName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>GlobalSWRadOnPlane[2000002]</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Location</ObjectListName>
+					<GridName>Hourly</GridName>
+					<FileName>RadiationLoadsOutputs</FileName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>GlobalSWRadOnPlane[2000003]</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Location</ObjectListName>
+					<GridName>Hourly</GridName>
+					<FileName>RadiationLoadsOutputs</FileName>
+				</OutputDefinition>
+				<OutputDefinition>
+					<Quantity>GlobalSWRadOnPlane[2000004]</Quantity>
+					<TimeType>Mean</TimeType>
+					<ObjectListName>Location</ObjectListName>
+					<GridName>Hourly</GridName>
+					<FileName>RadiationLoadsOutputs</FileName>
+				</OutputDefinition>
+			</Definitions>
+			<Grids>
+				<OutputGrid name="Hourly">
+					<Intervals>
+						<Interval>
+							<IBK:Parameter name="Start" unit="d">0</IBK:Parameter>
+							<IBK:Parameter name="StepSize" unit="h">1</IBK:Parameter>
+						</Interval>
+					</Intervals>				
+				</OutputGrid>
+				<OutputGrid name="Yearly">
+					<Intervals>
+						<Interval>
+							<IBK:Parameter name="Start" unit="d">0</IBK:Parameter>
+							<IBK:Parameter name="StepSize" unit="a">1</IBK:Parameter>
+						</Interval>
+					</Intervals>
+				</OutputGrid>
+			</Grids>
+		</Outputs>
+		<ObjectLists>
+			<ObjectList name="InternalLoads-Testfall 600FF">
+				<FilterID>3</FilterID>
+				<ReferenceType>Zone</ReferenceType>
+			</ObjectList>
+			<ObjectList name="Ventilation-Testfall 600FF">
+				<FilterID>3</FilterID>
+				<ReferenceType>Zone</ReferenceType>
+			</ObjectList>
+			<ObjectList name="All zones">
+				<FilterID>*</FilterID>
+				<ReferenceType>Zone</ReferenceType>
+			</ObjectList>
+			<ObjectList name="objListCI">
+				<FilterID>*</FilterID>
+				<ReferenceType>ConstructionInstance</ReferenceType>
+			</ObjectList>
+			<ObjectList name="Location">
+				<FilterID>*</FilterID>
+				<ReferenceType>Location</ReferenceType>
+			</ObjectList>
+			<ObjectList name="Outputs-1">
+				<FilterID>3</FilterID>
+				<ReferenceType>Zone</ReferenceType>
+			</ObjectList>
+			<ObjectList name="Outputs-2">
+				<FilterID>3</FilterID>
+				<ReferenceType>Zone</ReferenceType>
+			</ObjectList>
+			<ObjectList name="Outputs-3">
+				<FilterID>2,4,5,6,7,8</FilterID>
+				<ReferenceType>ConstructionInstance</ReferenceType>
+			</ObjectList>
+			<ObjectList name="Outputs-4">
+				<FilterID>10,12</FilterID>
+				<ReferenceType>EmbeddedObject</ReferenceType>
+			</ObjectList>
+			<ObjectList name="Outputs-5">
+				<FilterID>3</FilterID>
+				<ReferenceType>Zone</ReferenceType>
+			</ObjectList>
+			<ObjectList name="Outputs-6">
+				<FilterID>3</FilterID>
+				<ReferenceType>Zone</ReferenceType>
+			</ObjectList>
+			<ObjectList name="Outputs-7">
+				<FilterID>3</FilterID>
+				<ReferenceType>Zone</ReferenceType>
+			</ObjectList>
+			<ObjectList name="Outputs-8">
+				<FilterID>0</FilterID>
+				<ReferenceType>Location</ReferenceType>
+			</ObjectList>
+		</ObjectLists>
+		<FMIDescription />
+	</Project>
+</NandradProject>

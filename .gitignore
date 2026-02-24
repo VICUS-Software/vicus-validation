@@ -1,0 +1,43 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.idea/
+
+# Executables
+bin/
+
+# Generated validation results
+validation_results/
+
+# NANDRAD simulation outputs (results, logs, var)
+data/nandrad/*/results/
+data/nandrad/*/log/
+data/nandrad/*/var/
+
+# NANDRAD backup files
+*.nandrad.bak
+
+# EnergyPlus generated outputs
+data/energyplus/eplusout.*
+
+# Backup / scratch folders
+data/nandrad/Backup/
+data/nandrad/*_Ergebnisse/
+data/nandrad/Aenderungen/
+
+# Lock files
+.~lock.*
+
+# Workspace files
+*.p2
+*.bak
+
+# EnergyPlus intermediate files
+data/energyplus/readvars.audit
+data/energyplus/sqlite.err
+data/energyplus/shading-factor.csv
+data/energyplus/solar-incident.csv

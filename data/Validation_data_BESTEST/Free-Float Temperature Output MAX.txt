@@ -1,0 +1,9 @@
+    	BSIMAC 				CSE	    			DeST 				Energy+				ESP-r				NewHASP				TRNSYS			
+Case	T (°C)	Mo.	Day	Hr	T (°C)	Mo.	Day	Hr	T (°C)	Mo.	Day	Hr	T (°C)	Mo.	Day	Hr	T (°C)	Mo.	Day	Hr	T (°C)	Mo.	Day	Hr	T (°C)	Mo.	Day	Hr
+600FF 	63.4	Oct	18 	17 	68.4	Oct	1 	16 	65.0	Oct	11 	15 	63.8	Oct	18 	16 	64.6	Oct	1 	16 	66.9	Oct	1 	16 	62.4	Oct	1 	15 
+900FF 	46.0	Oct	1 	17 	45.1	Sep	4 	15 	44.5	Sep	11 	15 	44.3	Sep	12 	15 	44.3	Sep	12 	16 	46.2	Sep	12 	15 	43.3	Sep	12 	15 
+650FF 	62.1	Oct	18 	17 	66.8	Oct	1 	16 	62.6	Oct	11 	15 	62.5	Oct	18 	16 	63.3	Oct	1 	16 	65.1	Oct	1 	16 	61.1	Oct	1 	15 
+950FF 	37.1	Oct	1 	17 	36.8	Sep	11 	15 	36.4	Sep	11 	15 	36.7	Sep	11 	16 	36.4	Aug	5 	16 	36.7	Sep	11 	15 	36.1	Sep	11 	16 
+680FF 	72.5	Jan	22 	17 	78.5	Jan	22 	16 	75.0	Oct	12 	15 	70.1	Jan	22 	16 	72.2	Oct	12 	16 	81.5	Jan	22 	16 	69.8	Jan	22 	16 
+980FF 	49.7	Oct	1 	17 	52.2	Sep	12 	15 	52.8	Oct	21 	14 	49.6	Sep	12 	16 	50.2	Sep	12 	15 	56.0	Sep	12 	15 	48.5	Sep	12 	15 
+960 	-1	-1	-1	-1	48.9	Oct	2 	16 	53.2	Oct	20 	14 	49.9	Oct	12 	15 	49.5	Oct	12 	15 	51.7	Oct	12 	15 	48.1	Oct	12 	15 
