@@ -327,9 +327,9 @@ p, li { white-space: pre-wrap; }
 			<NaturalVentilationModels>
 				<NaturalVentilationModel id="3" displayName="Testfall 600" modelType="Constant">
 					<ZoneObjectList>Ventilation-Testfall 600</ZoneObjectList>
-					<IBK:Parameter name="VentilationRate" unit="1/h">0.414</IBK:Parameter>
+					<IBK:Parameter name="VentilationRate" unit="1/h">0.4255</IBK:Parameter>
 				</NaturalVentilationModel>
-			<NaturalVentilationModel id="5" displayName="Testfall 960SZ" modelType="Constant"><ZoneObjectList>Ventilation-Testfall 960SZ</ZoneObjectList><IBK:Parameter name="VentilationRate" unit="1/h">0.414</IBK:Parameter></NaturalVentilationModel></NaturalVentilationModels>
+			<NaturalVentilationModel id="5" displayName="Testfall 960SZ" modelType="Constant"><ZoneObjectList>Ventilation-Testfall 960SZ</ZoneObjectList><IBK:Parameter name="VentilationRate" unit="1/h">0.4255</IBK:Parameter></NaturalVentilationModel></NaturalVentilationModels>
 			<InternalLoadsModels>
 				<InternalLoadsModel id="1" displayName="Testfall 600" modelType="Scheduled">
 					<ZoneObjectList>InternalLoads-Testfall 600</ZoneObjectList>

@@ -403,7 +403,7 @@
 						<DailyCycles>
 							<DailyCycle interpolation="Constant">
 								<TimePoints>0,7,18</TimePoints>
-								<Values>VentilationRateSchedule [1/h]:11.284,0.414,11.284;</Values>
+								<Values>VentilationRateSchedule [1/h]:11.597,0.4255,11.597;</Values>
 							</DailyCycle>
 						</DailyCycles>
 					</Schedule>

@@ -451,10 +451,14 @@ def check_annual_references(
     nandrad_annual_cooling_kwh: float,
     case: str,
     annual_refs: pd.DataFrame,
+    ep_annual_heating_kwh: Optional[float] = None,
+    ep_annual_cooling_kwh: Optional[float] = None,
+    trnsys_annual_heating_kwh: Optional[float] = None,
+    trnsys_annual_cooling_kwh: Optional[float] = None,
 ) -> list[dict]:
-    """Compare NANDRAD annual heating/cooling totals against reference bands.
+    """Compare annual heating/cooling totals against reference bands.
 
-    Annual references are in MWh, NANDRAD values come in kWh -> convert.
+    Annual references are in MWh, values come in kWh -> convert.
     """
     results = []
     nandrad_heating_mwh = nandrad_annual_heating_kwh / 1000.0
@@ -467,6 +471,8 @@ def check_annual_references(
             "metric": "Jährliche Heizenergie [MWh]",
             "case": case,
             "nandrad_value": round(nandrad_heating_mwh, 4),
+            "ep_value": round(ep_annual_heating_kwh / 1000.0, 4) if ep_annual_heating_kwh is not None else "",
+            "trnsys_value": round(trnsys_annual_heating_kwh / 1000.0, 4) if trnsys_annual_heating_kwh is not None else "",
             "ref_min": row.get("heating_min"),
             "ref_max": row.get("heating_max"),
             "status": _check_range(nandrad_heating_mwh,
@@ -478,6 +484,8 @@ def check_annual_references(
             "metric": "Jährliche Kühlenergie [MWh]",
             "case": case,
             "nandrad_value": round(nandrad_cooling_mwh, 4),
+            "ep_value": round(ep_annual_cooling_kwh / 1000.0, 4) if ep_annual_cooling_kwh is not None else "",
+            "trnsys_value": round(trnsys_annual_cooling_kwh / 1000.0, 4) if trnsys_annual_cooling_kwh is not None else "",
             "ref_min": row.get("cooling_min"),
             "ref_max": row.get("cooling_max"),
             "status": _check_range(nandrad_cooling_mwh,
@@ -495,8 +503,12 @@ def check_peak_references(
     nandrad_peak_cooling_kw: float,
     case: str,
     annual_refs: pd.DataFrame,
+    ep_peak_heating_kw: Optional[float] = None,
+    ep_peak_cooling_kw: Optional[float] = None,
+    trnsys_peak_heating_kw: Optional[float] = None,
+    trnsys_peak_cooling_kw: Optional[float] = None,
 ) -> list[dict]:
-    """Compare NANDRAD peak heating/cooling loads against reference bands (kW)."""
+    """Compare peak heating/cooling loads against reference bands (kW)."""
     results = []
     if case in annual_refs.index:
         row = annual_refs.loc[case]
@@ -504,6 +516,8 @@ def check_peak_references(
             "metric": "Spitzenheizlast [kW]",
             "case": case,
             "nandrad_value": round(nandrad_peak_heating_kw, 4),
+            "ep_value": round(ep_peak_heating_kw, 4) if ep_peak_heating_kw is not None else "",
+            "trnsys_value": round(trnsys_peak_heating_kw, 4) if trnsys_peak_heating_kw is not None else "",
             "ref_min": row.get("peak_heating_min"),
             "ref_max": row.get("peak_heating_max"),
             "status": _check_range(nandrad_peak_heating_kw,
@@ -514,6 +528,8 @@ def check_peak_references(
             "metric": "Spitzenkühllast [kW]",
             "case": case,
             "nandrad_value": round(nandrad_peak_cooling_kw, 4),
+            "ep_value": round(ep_peak_cooling_kw, 4) if ep_peak_cooling_kw is not None else "",
+            "trnsys_value": round(trnsys_peak_cooling_kw, 4) if trnsys_peak_cooling_kw is not None else "",
             "ref_min": row.get("peak_cooling_min"),
             "ref_max": row.get("peak_cooling_max"),
             "status": _check_range(nandrad_peak_cooling_kw,
@@ -529,8 +545,14 @@ def check_free_float_references(
     nandrad_temp_avg: float,
     case: str,
     ff_refs: pd.DataFrame,
+    ep_temp_max: Optional[float] = None,
+    ep_temp_min: Optional[float] = None,
+    ep_temp_avg: Optional[float] = None,
+    trnsys_temp_max: Optional[float] = None,
+    trnsys_temp_min: Optional[float] = None,
+    trnsys_temp_avg: Optional[float] = None,
 ) -> list[dict]:
-    """Compare NANDRAD free-float temperatures against reference bands."""
+    """Compare free-float temperatures against reference bands."""
     results = []
     if ff_refs.empty or case not in ff_refs.index:
         logging.info("No free-float references for Case %s", case)
@@ -541,6 +563,8 @@ def check_free_float_references(
         "metric": "Max. Lufttemperatur [°C]",
         "case": case,
         "nandrad_value": round(nandrad_temp_max, 2),
+        "ep_value": round(ep_temp_max, 2) if ep_temp_max is not None else "",
+        "trnsys_value": round(trnsys_temp_max, 2) if trnsys_temp_max is not None else "",
         "ref_min": row.get("temp_max_min"),
         "ref_max": row.get("temp_max_max"),
         "status": _check_range(nandrad_temp_max,
@@ -551,6 +575,8 @@ def check_free_float_references(
         "metric": "Min. Lufttemperatur [°C]",
         "case": case,
         "nandrad_value": round(nandrad_temp_min, 2),
+        "ep_value": round(ep_temp_min, 2) if ep_temp_min is not None else "",
+        "trnsys_value": round(trnsys_temp_min, 2) if trnsys_temp_min is not None else "",
         "ref_min": row.get("temp_min_min"),
         "ref_max": row.get("temp_min_max"),
         "status": _check_range(nandrad_temp_min,
@@ -561,6 +587,8 @@ def check_free_float_references(
         "metric": "Mittl. Lufttemperatur [°C]",
         "case": case,
         "nandrad_value": round(nandrad_temp_avg, 2),
+        "ep_value": round(ep_temp_avg, 2) if ep_temp_avg is not None else "",
+        "trnsys_value": round(trnsys_temp_avg, 2) if trnsys_temp_avg is not None else "",
         "ref_min": row.get("temp_avg_min"),
         "ref_max": row.get("temp_avg_max"),
         "status": _check_range(nandrad_temp_avg,
@@ -600,10 +628,14 @@ def check_monthly_references(
         r_min = float(ref_min_val.iloc[0])
         r_max = float(ref_max_val.iloc[0])
         rounded_val = round(float(nandrad_val), 2)
+        ep_val = row_m.get("EnergyPlus", None)
+        trn_val = row_m.get("TRNSYS", None)
         results.append({
             "metric": f"{metric_label} {month_labels[i]} [kWh]",
             "case": case,
             "nandrad_value": rounded_val,
+            "ep_value": round(float(ep_val), 2) if ep_val is not None and pd.notna(ep_val) else "",
+            "trnsys_value": round(float(trn_val), 2) if trn_val is not None and pd.notna(trn_val) else "",
             "ref_min": r_min,
             "ref_max": r_max,
             "status": _check_range(rounded_val, r_min, r_max),
@@ -622,10 +654,16 @@ def generate_validation_report(
         return
 
     df = pd.DataFrame(results)
-    cols = ["metric", "nandrad_value", "ref_min", "ref_max", "status"]
+    cols = ["metric", "nandrad_value", "ep_value", "trnsys_value", "ref_min", "ref_max", "status"]
+    # Ensure columns exist (older result dicts may lack ep/trnsys)
+    for c in ("ep_value", "trnsys_value"):
+        if c not in df.columns:
+            df[c] = ""
     df = df[cols].rename(columns={
         "metric": "Metrik",
         "nandrad_value": "NANDRAD",
+        "ep_value": "EnergyPlus",
+        "trnsys_value": "TRNSYS",
         "ref_min": "Ref Min",
         "ref_max": "Ref Max",
         "status": "Status",
@@ -958,7 +996,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     energy_dir    = data_dir / "energyplus"
     idf_file      = energy_dir / f"Case{case}_{variant}.idf"
     eso_file      = energy_dir / "eplusout.eso"
-    trnsys_file   = data_dir / "trnsys" / f"CASE{case}.out"
+    trnsys_file   = data_dir / "trnsys" / f"CASE{case}" / f"CASE{case}.out"
     reference_tbl = data_dir / "reference" / "monthly-references.tsv"
     epw_file      = args.epw
 
@@ -1607,6 +1645,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         # ==========================================================
         is_ff = case.upper().endswith("FF")
 
+        # Helper to safely extract optional column values from a DataFrame
+        def _col_val(df, col, func):
+            if df is not None and col in df.columns:
+                return float(func(df[col]))
+            return None
+
         if annual_refs is not None:
             if is_ff and df_air_temp is not None:
                 # Free-float cases: check temperature extremes
@@ -1617,6 +1661,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                     nandrad_temp_avg=float(nandrad_temps.mean()),
                     case=case,
                     ff_refs=annual_refs.free_float,
+                    ep_temp_max=_col_val(df_air_temp, "EnergyPlus", pd.Series.max),
+                    ep_temp_min=_col_val(df_air_temp, "EnergyPlus", pd.Series.min),
+                    ep_temp_avg=_col_val(df_air_temp, "EnergyPlus", pd.Series.mean),
+                    trnsys_temp_max=_col_val(df_air_temp, "TRNSYS", pd.Series.max),
+                    trnsys_temp_min=_col_val(df_air_temp, "TRNSYS", pd.Series.min),
+                    trnsys_temp_avg=_col_val(df_air_temp, "TRNSYS", pd.Series.mean),
                 ))
             else:
                 # Non-FF cases: check annual heating/cooling totals and peaks
@@ -1639,12 +1689,20 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                     nandrad_annual_cooling_kwh=annual_cooling_kwh,
                     case=case,
                     annual_refs=annual_refs.annual,
+                    ep_annual_heating_kwh=_col_val(df_heating, "EnergyPlus", pd.Series.sum),
+                    ep_annual_cooling_kwh=_col_val(df_cooling, "EnergyPlus", pd.Series.sum),
+                    trnsys_annual_heating_kwh=_col_val(df_heating, "TRNSYS", pd.Series.sum),
+                    trnsys_annual_cooling_kwh=_col_val(df_cooling, "TRNSYS", pd.Series.sum),
                 ))
                 validation_results.extend(check_peak_references(
                     nandrad_peak_heating_kw=peak_heating_kw,
                     nandrad_peak_cooling_kw=peak_cooling_kw,
                     case=case,
                     annual_refs=annual_refs.annual,
+                    ep_peak_heating_kw=_col_val(df_heating, "EnergyPlus", pd.Series.max),
+                    ep_peak_cooling_kw=_col_val(df_cooling, "EnergyPlus", pd.Series.max),
+                    trnsys_peak_heating_kw=_col_val(df_heating, "TRNSYS", pd.Series.max),
+                    trnsys_peak_cooling_kw=_col_val(df_cooling, "TRNSYS", pd.Series.max),
                 ))
 
         # Generate validation summary report

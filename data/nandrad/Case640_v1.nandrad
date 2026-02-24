@@ -419,7 +419,7 @@
 			<NaturalVentilationModels>
 				<NaturalVentilationModel id="3" displayName="Testfall 640" modelType="Constant">
 					<ZoneObjectList>Ventilation-Testfall 640</ZoneObjectList>
-					<IBK:Parameter name="VentilationRate" unit="1/h">0.414</IBK:Parameter>
+					<IBK:Parameter name="VentilationRate" unit="1/h">0.4255</IBK:Parameter>
 				</NaturalVentilationModel>
 			</NaturalVentilationModels>
 			<InternalLoadsModels>

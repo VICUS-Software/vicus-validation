@@ -242,6 +242,8 @@ def collect_results(
                 "Case": case,
                 "Metrik": "(keine Ergebnisse)",
                 "NANDRAD": "",
+                "EnergyPlus": "",
+                "TRNSYS": "",
                 "Ref Min": "",
                 "Ref Max": "",
                 "Status": "ERROR" if exit_codes.get(case, 1) != 0 else "N/A",
@@ -254,6 +256,8 @@ def collect_results(
                     "Case": case,
                     "Metrik": row.get("Metrik", ""),
                     "NANDRAD": row.get("NANDRAD", ""),
+                    "EnergyPlus": row.get("EnergyPlus", ""),
+                    "TRNSYS": row.get("TRNSYS", ""),
                     "Ref Min": row.get("Ref Min", ""),
                     "Ref Max": row.get("Ref Max", ""),
                     "Status": row.get("Status", "N/A"),
@@ -264,6 +268,8 @@ def collect_results(
                 "Case": case,
                 "Metrik": "(Fehler beim Lesen)",
                 "NANDRAD": "",
+                "EnergyPlus": "",
+                "TRNSYS": "",
                 "Ref Min": "",
                 "Ref Max": "",
                 "Status": "ERROR",
@@ -353,13 +359,14 @@ def write_overview_md(
         if c_desc:
             lines.append(f"_{c_desc}_")
         lines.append("")
-        lines.append("| Metrik | NANDRAD | Ref Min | Ref Max | Status |")
-        lines.append("|--------|---------|---------|---------|--------|")
+        lines.append("| Metrik | NANDRAD | EnergyPlus | TRNSYS | Ref Min | Ref Max | Status |")
+        lines.append("|--------|---------|------------|--------|---------|---------|--------|")
         for _, row in grp.iterrows():
             st = str(row["Status"])
             st_fmt = f"**{st}**" if st == "FAIL" else st
             lines.append(
                 f'| {row["Metrik"]} | {row["NANDRAD"]} '
+                f'| {row.get("EnergyPlus", "")} | {row.get("TRNSYS", "")} '
                 f'| {row["Ref Min"]} | {row["Ref Max"]} | {st_fmt} |'
             )
         lines.append("")
@@ -439,6 +446,8 @@ def write_overview_html(
                 f'<tr>'
                 f'<td>{row["Metrik"]}</td>'
                 f'<td>{row["NANDRAD"]}</td>'
+                f'<td>{row.get("EnergyPlus", "")}</td>'
+                f'<td>{row.get("TRNSYS", "")}</td>'
                 f'<td>{row["Ref Min"]}</td>'
                 f'<td>{row["Ref Max"]}</td>'
                 f'<td style="background:{bg};font-weight:bold;">{st}</td>'
@@ -453,7 +462,7 @@ def write_overview_html(
   <span style="background:{res_bg};color:{res_clr};padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">{case_res}</span>
 </summary>
 {desc_html}<table>
-<thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
+<thead><tr><th>Metrik</th><th>NANDRAD</th><th>EnergyPlus</th><th>TRNSYS</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
 <tbody>
 {"".join(metric_rows)}
 </tbody>
@@ -535,7 +544,12 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--out-dir", type=Path,
                         default=Path.cwd() / "validation_results",
                         help="Output directory")
-    return parser.parse_args(argv)
+    args = parser.parse_args(argv)
+    # Resolve relative paths to absolute so they work from any subprocess cwd
+    args.nandrad_exec = args.nandrad_exec.resolve()
+    args.data_dir = args.data_dir.resolve()
+    args.out_dir = args.out_dir.resolve()
+    return args
 
 
 # ---------------------------------------------------------------------------
