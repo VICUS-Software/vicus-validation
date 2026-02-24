@@ -98,6 +98,130 @@ def run_single_case(
 
 
 # ---------------------------------------------------------------------------
+# BESTEST case descriptions
+# ---------------------------------------------------------------------------
+
+CASE_DESCRIPTIONS: dict[str, tuple[str, str]] = {
+    # (short title, changes vs base case)
+    # Low-Mass Base Series
+    "600":   ("Leichtbau Basisfall",
+              "Leichtbau, Südfenster 12 m², Thermostat 20/27 °C, 0.5 ach, 200 W int. Lasten"),
+    "610":   ("Süd-Verschattung",
+              "Wie 600 + horizontaler Überhang 1.0 m, 0.5 m über Fensteroberkante"),
+    "620":   ("Ost-/West-Fenster",
+              "Wie 600, aber 6 m² Ost + 6 m² West statt 12 m² Süd"),
+    "630":   ("Ost-/West-Verschattung",
+              "Wie 620 + Überhang und vertikale Lamellen an Ost-/West-Fenstern"),
+    "640":   ("Nachtabsenkung",
+              "Wie 600 + Heizung Nachtabsenkung auf 10 °C (23:00–07:00)"),
+    "650":   ("Nachtlüftung",
+              "Wie 600, keine Heizung, mechanische Lüftung 1700 m³/h (18:00–07:00)"),
+    "660":   ("Low-E Verglasung",
+              "Wie 600, Low-E Argon-Verglasung statt Zweischeiben-Klarverglasung"),
+    "670":   ("Einscheibenverglasung",
+              "Wie 600, Einscheiben-Klarverglasung statt Zweischeiben"),
+    "680":   ("Erhöhte Dämmung",
+              "Wie 600, Wand 0.250 m und Dach 0.400 m Dämmung (statt 0.066/0.112 m)"),
+    "685":   ("Thermostat 20/20",
+              "Wie 600, Thermostat 20/20 °C (kein Totband)"),
+    "695":   ("Erhöhte Dämmung + 20/20",
+              "Kombination aus Case 680 (Dämmung) + Case 685 (Thermostat)"),
+    # High-Mass Base Series
+    "900":   ("Schwerbau Basisfall",
+              "Wie 600, aber Betonstein-Wände und Bodenplatte statt Leichtbau"),
+    "910":   ("Schwerbau + Süd-Verschattung",
+              "Kombination Case 900 (Schwerbau) + Case 610 (Überhang)"),
+    "920":   ("Schwerbau + Ost-/West-Fenster",
+              "Kombination Case 900 + Case 620 (Ost-/West-Fenster)"),
+    "930":   ("Schwerbau + Ost-/West-Verschattung",
+              "Kombination Case 900 + Case 630 (Ost-/West-Verschattung)"),
+    "940":   ("Schwerbau + Nachtabsenkung",
+              "Kombination Case 900 + Case 640 (Nachtabsenkung)"),
+    "950":   ("Schwerbau + Nachtlüftung",
+              "Kombination Case 900 + Case 650 (Nachtlüftung); Masse speichert Nachtkühle"),
+    "960":   ("Wintergarten (Sunspace)",
+              "Zwei-Zonen-Gebäude: Hinterzone (Leichtbau), Wintergarten (Schwerbau, 2 m tief)"),
+    "980":   ("Schwerbau + erhöhte Dämmung",
+              "Kombination Case 900 + Case 680 (erhöhte Dämmung)"),
+    "985":   ("Schwerbau + 20/20",
+              "Kombination Case 900 + Case 685 (Thermostat 20/20)"),
+    "995":   ("Schwerbau + Dämmung + 20/20",
+              "Kombination Case 900 + Case 695 (erhöhte Dämmung + Thermostat 20/20)"),
+    # Free-Float Variants
+    "600FF": ("Free-Float Leichtbau",
+              "Wie 600, keine Heizung/Kühlung — freie Temperaturentwicklung"),
+    "650FF": ("Free-Float Nachtlüftung",
+              "Wie 650 (Nachtlüftung) ohne HVAC, freie Temperaturen"),
+    "680FF": ("Free-Float erhöhte Dämmung",
+              "Wie 680 (erhöhte Dämmung) ohne HVAC, freie Temperaturen"),
+    "900FF": ("Free-Float Schwerbau",
+              "Wie 900 (Schwerbau) ohne HVAC, freie Temperaturen"),
+    "950FF": ("Free-Float Schwerbau + Nachtlüftung",
+              "Wie 950 (Schwerbau + Nachtlüftung) ohne HVAC, freie Temperaturen"),
+    "980FF": ("Free-Float Schwerbau + Dämmung",
+              "Wie 980 (Schwerbau + Dämmung) ohne HVAC, höchste Sommertemperaturen"),
+    # In-Depth Diagnostic 20/20
+    "195":   ("Reine Wärmeleitung",
+              "Opake Wände, keine Fenster, keine Infiltration, keine int. Lasten; Thermostat 20/20"),
+    "200":   ("Reduzierte IR-Emissivität innen+außen",
+              "Wie 220, IR-Emissivität innen und außen auf 0.1 reduziert"),
+    "210":   ("Reduzierte IR-Emissivität innen",
+              "Wie 220, IR-Emissivität innen auf 0.1 reduziert"),
+    "215":   ("Reduzierte IR-Emissivität außen",
+              "Wie 220, IR-Emissivität außen auf 0.1 reduziert"),
+    "220":   ("Diagnostik Basisfall 20/20",
+              "Hochleitende Wandelemente (keine Fenster), keine Infiltration, keine int. Lasten, α=0.1"),
+    "230":   ("Infiltration",
+              "Wie 220 + 1.0 ach Infiltration"),
+    "240":   ("Interne Lasten",
+              "Wie 220 + 200 W interne Lasten"),
+    "250":   ("Solare Absorption außen",
+              "Wie 220, äußere Solarabsorption von 0.1 auf 0.9 erhöht"),
+    "270":   ("Süd-Solargewinne",
+              "Wie 220, hochleitende Elemente durch Süd-Fenster ersetzt"),
+    "280":   ("Innenraum-Albedo",
+              "Wie 270, innere Solarabsorption von 0.9 auf 0.1 reduziert"),
+    "290":   ("Süd-Verschattung (Diagnostik)",
+              "Wie 270 + Case 610 Überhang"),
+    "300":   ("Ost-/West-Fenster (Diagnostik)",
+              "Wie 270, Süd-Fenster durch Ost-/West ersetzt"),
+    "310":   ("Ost-/West-Verschattung (Diagnostik)",
+              "Wie 300 + Überhang und Lamellen"),
+    "320":   ("Totband-Thermostat 20/27",
+              "Wie 270, Thermostat von 20/20 auf 20/27 geändert"),
+    # In-Depth Diagnostic 20/27
+    "395":   ("Wärmeleitung (Totband)",
+              "Wie 200 mit 20/27-Thermostat; Standardwände statt hochleitender Elemente"),
+    "400":   ("Diagnostik Basisfall 20/27",
+              "Wie 220 mit 20/27-Thermostat"),
+    "410":   ("Infiltration (Totband)",
+              "Wie 400 + 0.5 ach Infiltration"),
+    "420":   ("Interne Lasten (Totband)",
+              "Wie 410 + 200 W interne Lasten"),
+    "430":   ("Solare Absorption außen (Totband)",
+              "Wie 420, äußere Solarabsorption auf 0.6 erhöht"),
+    "440":   ("Innenraum-Albedo (Totband)",
+              "Wie 600, innere Solarabsorption auf 0.1 reduziert"),
+    "450":   ("Konstante kombinierte Übergangskoeffizienten",
+              "Wie 600, feste kombinierte Übergangskoeffizienten innen+außen"),
+    "460":   ("Konstante innere Übergangskoeffizienten",
+              "Wie 600, feste innere Übergangskoeffizienten, außen variabel"),
+    "470":   ("Konstante äußere Übergangskoeffizienten",
+              "Wie 600, feste äußere Übergangskoeffizienten, innen variabel"),
+    # Additional High-Mass Diagnostic
+    "800":   ("Schwerbau ohne Solargewinne",
+              "Wie 430 (hochleitende Elemente) + Case 900 (Schwerbau)"),
+    "810":   ("Schwerbau Innenraum-Albedo",
+              "Wie 900, innere Solarabsorption auf 0.1 reduziert"),
+}
+
+
+def get_case_info(case: str) -> tuple[str, str]:
+    """Return (title, description) for a BESTEST case, or defaults."""
+    return CASE_DESCRIPTIONS.get(case, (f"Case {case}", ""))
+
+
+# ---------------------------------------------------------------------------
 # Result collection
 # ---------------------------------------------------------------------------
 
@@ -224,9 +348,11 @@ def write_overview_html(
         res = row["Ergebnis"]
         bg = _result_bg(res)
         clr = _result_color(res)
+        c_title, _ = get_case_info(str(row["Case"]))
         summary_rows.append(
             f'<tr>'
             f'<td><a href="#case-{row["Case"]}">{row["Case"]}</a></td>'
+            f'<td>{c_title}</td>'
             f'<td>{row["Metriken"]}</td>'
             f'<td>{row["PASS"]}</td>'
             f'<td>{row["FAIL"]}</td>'
@@ -241,6 +367,7 @@ def write_overview_html(
         case_res = summary.loc[summary["Case"] == case, "Ergebnis"].iloc[0]
         res_bg = _result_bg(case_res)
         res_clr = _result_color(case_res)
+        c_title, c_desc = get_case_info(str(case))
 
         metric_rows = []
         for _, row in grp.iterrows():
@@ -256,13 +383,14 @@ def write_overview_html(
                 f'</tr>'
             )
 
+        desc_html = f'<p style="color:#555;margin:4px 0 8px 0;">{c_desc}</p>' if c_desc else ""
         detail_sections.append(f"""
 <details id="case-{case}">
 <summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
-  Case {case}
+  Case {case} &mdash; {c_title}
   <span style="background:{res_bg};color:{res_clr};padding:2px 8px;border-radius:4px;font-weight:bold;font-size:0.9em;">{case_res}</span>
 </summary>
-<table>
+{desc_html}<table>
 <thead><tr><th>Metrik</th><th>NANDRAD</th><th>Ref Min</th><th>Ref Max</th><th>Status</th></tr></thead>
 <tbody>
 {"".join(metric_rows)}
@@ -305,7 +433,7 @@ details > table {{ margin-top: 4px; }}
 
 <h2>Zusammenfassung</h2>
 <table>
-<thead><tr><th>Case</th><th>Metriken</th><th>PASS</th><th>FAIL</th><th>SKIP/N/A</th><th>Ergebnis</th></tr></thead>
+<thead><tr><th>Case</th><th>Beschreibung</th><th>Metriken</th><th>PASS</th><th>FAIL</th><th>SKIP/N/A</th><th>Ergebnis</th></tr></thead>
 <tbody>
 {"".join(summary_rows)}
 </tbody>
