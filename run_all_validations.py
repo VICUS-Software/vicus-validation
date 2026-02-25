@@ -455,6 +455,16 @@ def write_overview_html(
             )
 
         desc_html = f'<p style="color:#555;margin:4px 0 8px 0;">{c_desc}</p>' if c_desc else ""
+
+        # Embed comparison SVG if available
+        svg_name = f"Case{case}_{variant}_comprehensive_comparison.svg"
+        svg_html = (
+            f'<div style="margin:12px 0;">'
+            f'<img src="comparison/{svg_name}" alt="Case {case} Comparison" '
+            f'style="max-width:100%;border:1px solid #ddd;border-radius:4px;">'
+            f'</div>'
+        )
+
         detail_sections.append(f"""
 <details id="case-{case}">
 <summary style="cursor:pointer;font-size:1.15em;margin:12px 0 4px;">
@@ -467,6 +477,7 @@ def write_overview_html(
 {"".join(metric_rows)}
 </tbody>
 </table>
+{svg_html}
 </details>""")
 
     html = f"""<!DOCTYPE html>
